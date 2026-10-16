@@ -205,3 +205,22 @@ main { display: block; }
   .spende { padding: 1.25rem; }
   .qr { width: 100%; max-width: 15rem; }
 }
+
+.nav a[aria-current] { color: var(--text); }
+.tasten { margin: 2rem 0 1rem; padding: 1.25rem 1.5rem; background: var(--flaeche); border: 1px solid var(--linie); border-radius: 12px; }
+.tasten h2 { font-size: 1.6rem; margin: 0; }
+.tasten .technik dt, .tasten .technik dd { border-top-color: var(--linie); }
+.tasten .technik dd { color: var(--gedimmt); }
+.anleitung { list-style: none; padding: 0; margin: 2.5rem 0 0; counter-reset: a; }
+.anleitung > li { counter-increment: a; position: relative; padding: 0 0 2rem 3.6rem; }
+.anleitung > li::before {
+  content: counter(a); position: absolute; left: 0; top: -.2rem; width: 2.5rem; height: 2.5rem; border-radius: 50%;
+  display: grid; place-items: center; border: 2px solid var(--linie); background: var(--schiefer);
+  font: 700 1.25rem/1 "Barlow Condensed", sans-serif;
+}
+.anleitung > li::after { content: ""; position: absolute; left: 1.2rem; top: 2.5rem; bottom: .3rem; width: 2px; background: var(--linie); }
+.anleitung > li:last-child::after { display: none; }
+.anleitung h2 { font-size: 1.6rem; margin: 0 0 .5rem; }
+.anleitung ul { margin: 0; padding-left: 1.1rem; color: var(--gedimmt); }
+.anleitung ul li { margin: .35rem 0; }
+@media (max-width: 34rem) { .tasten .technik { grid-template-columns: 1fr; } }

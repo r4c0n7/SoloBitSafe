@@ -4,6 +4,7 @@ import sys
 
 sys.path.insert(0, str(pathlib.Path(__file__).parent))
 from texte import DATUM, LOG, SPENDE, SPRACHEN, T, VERSION
+from anleitung import ANLEITUNG
 
 WURZEL = pathlib.Path(__file__).resolve().parents[1]
 DOCS = WURZEL / "docs"
@@ -39,7 +40,7 @@ def kopf(s, t, seite, titel, beschreibung):
 <link rel="alternate" hreflang="x-default" href="{URL}{seite}">
 <meta property="og:title" content="{e(titel)}">
 <meta property="og:description" content="{e(beschreibung)}">
-<meta property="og:image" content="{URL}img/display/3b-wallet-entsperrt.webp">
+<meta property="og:image" content="{URL}img/display/{s}/3b-wallet-entsperrt.webp">
 <meta property="og:url" content="{URL}{pfad(s, seite)}">
 <meta name="theme-color" content="#1c232d">
 <link rel="icon" href="{hoch}img/mark.svg" type="image/svg+xml">
@@ -57,7 +58,7 @@ def leiste(s, t, seite):
     start = relativ(s, s)
     nav = "".join(
         f'<a href="{start if seite else ""}#{a}">{e(n)}</a>' for a, n in zip(ANKER, t["nav"])
-    )
+    ) + f'<a href="guide.html"{' aria-current="page"' if seite == "guide.html" else ""}>{e(ANLEITUNG[s]["titel"])}</a>'
     sprachen = "".join(
         f'<a href="{relativ(s, x, seite)}" hreflang="{x}" lang="{x}"'
         + (' aria-current="true"' if x == s else "")
@@ -88,7 +89,7 @@ def fuss(s, t):
 def geraet(s, t):
     hoch = "" if s == "en" else "../"
     bilder = "".join(
-        f'<img src="{hoch}img/display/{n}.webp" alt="" width="960" height="510"'
+        f'<img src="{hoch}img/display/{s}/{n}.webp" alt="" width="960" height="510"'
         + (' class="beleg"' if n.startswith("4a") else "")
         + ">"
         for n in ["0-start", "1-mining", "3b-wallet-entsperrt", "4a-beleg-kontakt"]
@@ -111,7 +112,7 @@ def galerie(s, t):
         [(f"{hoch}img/{s}/app-desktop-{n}.webp", t["bild"][n], "breit") for n in app],
         [(f"{hoch}img/{s}/web-desktop-{n[4:]}.webp", t["bild"][n], "breit")
          for n in ["web-gesperrt", "web-offen-1", "web-offen-2", "web-offen-3"]],
-        [(f"{hoch}img/display/{n}.webp", t["bild"][n], "display")
+        [(f"{hoch}img/display/{s}/{n}.webp", t["bild"][n], "display")
          for n in ["0-start", "1-mining", "2-netzwerk", "3a-wallet-gesperrt", "3b-wallet-entsperrt", "4a-beleg-kontakt"]],
     ]
     knoepfe = "".join(
@@ -176,7 +177,7 @@ def startseite(s):
 <div class="held-text">
 <h1>{e(t["h1"])}</h1>
 <p class="lead">{e(t["lead"])}</p>
-<p class="aktionen"><a class="knopf primaer" href="#ansichten">{e(t["knopf_screens"])}</a><a class="knopf" href="changelog.html">{e(t["knopf_log"])}</a></p>
+<p class="aktionen"><a class="knopf primaer" href="guide.html">{e(ANLEITUNG[s]["titel"])}</a><a class="knopf" href="#ansichten">{e(t["knopf_screens"])}</a><a class="knopf" href="changelog.html">{e(t["knopf_log"])}</a></p>
 <p class="stand">{e(t["stand"].format(v=VERSION))}</p>
 </div>
 {geraet(s, t)}
@@ -211,6 +212,29 @@ def changelog(s):
     )
 
 
+def anleitung(s):
+    t = T[s]
+    a = ANLEITUNG[s]
+    schritte = "".join(
+        f'<li><h2>{e(titel)}</h2><ul>{"".join(f"<li>{e(p)}</li>" for p in punkte)}</ul></li>'
+        for titel, punkte in a["schritte"]
+    )
+    tasten = "".join(f"<dt>{e(k)}</dt><dd>{e(v)}</dd>" for k, v in a["tasten"])
+    return (
+        kopf(s, t, "guide.html", f'{a["titel"]} – SoloBitSafe', a["intro"])
+        + leiste(s, t, "guide.html")
+        + f"""<main id="inhalt" class="schmal">
+<p><a href="./">{e(t["log_zurueck"])}</a></p>
+<h1>{e(a["titel"])}</h1>
+<p class="text">{e(a["intro"])}</p>
+<section class="tasten"><h2>{e(a["tasten_h"])}</h2><dl class="technik">{tasten}</dl></section>
+<ol class="anleitung">{schritte}</ol>
+</main>
+"""
+        + fuss(s, t)
+    )
+
+
 def markdown():
     t = T["en"]
     zeilen = ["# Changelog", "", t["log_text"], "", f"Website: {URL}changelog.html", ""]
@@ -228,6 +252,7 @@ def main():
         ordner.mkdir(parents=True, exist_ok=True)
         (ordner / "index.html").write_text(startseite(s), encoding="utf-8")
         (ordner / "changelog.html").write_text(changelog(s), encoding="utf-8")
+        (ordner / "guide.html").write_text(anleitung(s), encoding="utf-8")
     (WURZEL / "CHANGELOG.md").write_text(markdown(), encoding="utf-8")
     (DOCS / ".nojekyll").write_text("", encoding="utf-8")
     print("gebaut:", ", ".join(SPRACHEN))

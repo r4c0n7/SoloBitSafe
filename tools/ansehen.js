@@ -32,6 +32,9 @@ const server = http.createServer((req, res) => {
       await p.screenshot({ path: `${O}/${art}-${s.replace('/', '') || 'en'}.png`, fullPage: true });
       await p.screenshot({ path: `${O}/${art}-${s.replace('/', '') || 'en'}-oben.png` });
     }
+    await p.goto('http://127.0.0.1:8090/SoloBitSafe/de/guide.html', { waitUntil: 'networkidle' });
+    if (await p.evaluate(() => document.documentElement.scrollWidth > window.innerWidth)) fehler.push(art + ' guide: horizontal scroll');
+    await p.screenshot({ path: `${O}/${art}-de-guide.png`, fullPage: true });
     await p.goto('http://127.0.0.1:8090/SoloBitSafe/fr/changelog.html', { waitUntil: 'networkidle' });
     await p.screenshot({ path: `${O}/${art}-fr-changelog.png`, fullPage: true });
     const links = await p.$$eval('a[href]', (a) => a.map((x) => x.href).filter((h) => h.startsWith('http://127.0.0.1')));

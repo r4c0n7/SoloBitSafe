@@ -20,8 +20,11 @@ def webp(quelle, ziel, breite=None):
 
 
 def main():
-    for name in ["0-start", "1-mining", "3a-wallet-gesperrt", "3b-wallet-entsperrt", "4a-beleg-kontakt", "2-netzwerk"]:
-        webp(REPO / f"docs/design/solobitsafe/display/{name}/{name}@3x.png", ZIEL / "display" / f"{name}.webp")
+    DISPLAY = pathlib.Path(sys.argv[3]) if len(sys.argv) > 3 else None
+    if DISPLAY:
+        for sprache in ["en", "de", "es", "fr"]:
+            for f in sorted((DISPLAY / sprache).glob("*.png")):
+                webp(f, ZIEL / "display" / sprache / (f.stem + ".webp"))
     webp(REPO / "docs/brand/solobitsafe-mark-512.png", ZIEL / "mark.webp", 256)
     (ZIEL / "mark.svg").write_bytes((REPO / "docs/brand/solobitsafe-mark.svg").read_bytes())
     if VORSCHAU:

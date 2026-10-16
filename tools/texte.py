@@ -1,4 +1,4 @@
-VERSION = "V1.0.5b"
+VERSION = "V1.0.6b"
 SPENDE = "bc1q8draqujtwuy9gx799n0e5vylvx4aftrvd90trr"
 
 SPRACHEN = {"en": "English", "de": "Deutsch", "es": "Español", "fr": "Français"}
@@ -48,7 +48,7 @@ T = {
             "Several wallets, app lock with fingerprint or Windows Hello.",
         ],
         "bilder_h": "Screens",
-        "bilder_text": "Real screenshots from the app and the web dashboard, rendered with the public BIP39 test wallet. The display pictures show the German interface.",
+        "bilder_text": "Real screenshots from the app and the web dashboard, rendered with the public BIP39 test wallet. The display pictures follow the page language.",
         "reiter": ["App on a phone", "App on a computer", "Web dashboard", "Device display"],
         "bild": {
             "uebersicht": "Overview with the total across all address types",
@@ -142,7 +142,7 @@ T = {
             "Mehrere Wallets, App-Sperre mit Fingerabdruck oder Windows Hello.",
         ],
         "bilder_h": "Ansichten",
-        "bilder_text": "Echte Aufnahmen aus App und Web-Dashboard, erzeugt mit der öffentlichen BIP39-Test-Wallet. Die Display-Bilder zeigen die deutsche Oberfläche.",
+        "bilder_text": "Echte Aufnahmen aus App und Web-Dashboard, erzeugt mit der öffentlichen BIP39-Test-Wallet. Die Display-Bilder folgen der Seitensprache.",
         "reiter": ["App am Handy", "App am Rechner", "Web-Dashboard", "Geräte-Display"],
         "bild": {
             "uebersicht": "Übersicht mit der Summe aller Adresstypen",
@@ -236,7 +236,7 @@ T = {
             "Varios monederos y bloqueo de la app con huella o Windows Hello.",
         ],
         "bilder_h": "Pantallas",
-        "bilder_text": "Capturas reales de la app y del panel web, generadas con el monedero de prueba público de BIP39. Las imágenes de la pantalla muestran la interfaz en alemán.",
+        "bilder_text": "Capturas reales de la app y del panel web, generadas con el monedero de prueba público de BIP39. Las imágenes de la pantalla siguen el idioma de la página.",
         "reiter": ["App en el móvil", "App en el ordenador", "Panel web", "Pantalla del dispositivo"],
         "bild": {
             "uebersicht": "Resumen con el total de todos los tipos de dirección",
@@ -330,7 +330,7 @@ T = {
             "Plusieurs portefeuilles, verrouillage de l'appli par empreinte ou Windows Hello.",
         ],
         "bilder_h": "Écrans",
-        "bilder_text": "Captures réelles de l'appli et du tableau de bord web, générées avec le portefeuille de test public BIP39. Les images de l'écran montrent l'interface allemande.",
+        "bilder_text": "Captures réelles de l'appli et du tableau de bord web, générées avec le portefeuille de test public BIP39. Les images de l'écran suivent la langue de la page.",
         "reiter": ["Appli sur téléphone", "Appli sur ordinateur", "Tableau de bord web", "Écran de l'appareil"],
         "bild": {
             "uebersicht": "Vue d'ensemble avec le total de tous les types d'adresse",
@@ -390,6 +390,32 @@ DATUM = {
 }
 
 LOG = [
+    ("2026-10-16", "V1.0.6b", {
+        "en": ["Version V1.0.6b",
+               "Security review: parsers for PSBT, Jade, commands and frames fuzzed with AddressSanitizer and UBSan – no findings",
+               "Hardening: stronger stack protection, pinned library versions, passwords masked in the device log",
+               "Display easier to read: larger small text, better contrast, every text checked to fit in all four languages",
+               "App: higher contrast, larger text, aligned buttons and a clear fee list",
+               "Website: setup guide, and screenshots in the language of the page"],
+        "de": ["Version V1.0.6b",
+               "Sicherheitsprüfung: Parser für PSBT, Jade, Befehle und Rahmen mit AddressSanitizer und UBSan gefuzzt – ohne Fund",
+               "Härtung: stärkerer Stapelschutz, feste Bibliotheksversionen, Passwörter im Geräte-Log maskiert",
+               "Display besser lesbar: größere kleine Schrift, mehr Kontrast, jeder Text in allen vier Sprachen auf Platz geprüft",
+               "App: mehr Kontrast, größere Schrift, ausgerichtete Knöpfe und eine klare Gebührenliste",
+               "Website: Einrichtungsanleitung und Bilder in der Sprache der Seite"],
+        "es": ["Versión V1.0.6b",
+               "Revisión de seguridad: analizadores de PSBT, Jade, órdenes y tramas sometidos a fuzzing con AddressSanitizer y UBSan, sin hallazgos",
+               "Refuerzo: protección de pila más fuerte, versiones de bibliotecas fijas, contraseñas ocultas en el registro",
+               "Pantalla más legible: texto pequeño más grande, más contraste y cada texto comprobado en los cuatro idiomas",
+               "App: más contraste, texto más grande, botones alineados y una lista de comisiones clara",
+               "Web: guía de configuración e imágenes en el idioma de la página"],
+        "fr": ["Version V1.0.6b",
+               "Revue de sécurité : analyseurs PSBT, Jade, commandes et trames testés par fuzzing avec AddressSanitizer et UBSan – aucun problème",
+               "Renforcement : protection de pile renforcée, versions des bibliothèques figées, mots de passe masqués dans le journal",
+               "Écran plus lisible : petit texte agrandi, meilleur contraste, chaque texte vérifié dans les quatre langues",
+               "Appli : plus de contraste, texte plus grand, boutons alignés et liste des frais claire",
+               "Site : guide d'installation et images dans la langue de la page"],
+    }),
     ("2026-10-16", "V1.0.5b", {
         "en": ["Version V1.0.5b",
                "Fixed: the display froze while Bluetooth was on, so a language change from the app did not show up",

@@ -4,6 +4,15 @@ What changed, day by day, since the project started on 8 October 2026.
 
 Website: https://r4c0n7.github.io/SoloBitSafe/changelog.html
 
+## 2026-10-16 – V1.0.6b
+
+- Version V1.0.6b
+- Security review: parsers for PSBT, Jade, commands and frames fuzzed with AddressSanitizer and UBSan – no findings
+- Hardening: stronger stack protection, pinned library versions, passwords masked in the device log
+- Display easier to read: larger small text, better contrast, every text checked to fit in all four languages
+- App: higher contrast, larger text, aligned buttons and a clear fee list
+- Website: setup guide, and screenshots in the language of the page
+
 ## 2026-10-16 – V1.0.5b
 
 - Version V1.0.5b
