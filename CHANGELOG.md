@@ -4,8 +4,13 @@ What changed, day by day, since the project started on 8 October 2026.
 
 Website: https://r4c0n7.github.io/SoloBitSafe/changelog.html
 
-## 2026-10-16
+## 2026-10-16 – V1.0.2b
 
+- Version V1.0.2b
+- Updates carry a signed version number; older firmware is rejected
+- The app falls back to other Electrum and Esplora servers when one is down, and remembers the one that works
+- Bluetooth: the second pairing window after a pairing works again, the device keeps the confirmed pairing
+- Status raised from experimental to beta
 - Secure Boot v2 and flash encryption prepared: bootloader build, signed images, recovery path over USB, dry run
 - Bluetooth passkey entered in the app on Android too; app lock with fingerprint or Windows Hello
 - Lock chip with remaining time in the app; locking returns to the passphrase screen
