@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Cambios – SoloBitSafe</title>
+<meta name="description" content="Qué ha cambiado, día a día, desde el inicio del proyecto el 8 de octubre de 2026.">
+<link rel="canonical" href="https://r4c0n7.github.io/SoloBitSafe/es/changelog.html">
+<link rel="alternate" hreflang="en" href="https://r4c0n7.github.io/SoloBitSafe/changelog.html">
+<link rel="alternate" hreflang="de" href="https://r4c0n7.github.io/SoloBitSafe/de/changelog.html">
+<link rel="alternate" hreflang="es" href="https://r4c0n7.github.io/SoloBitSafe/es/changelog.html">
+<link rel="alternate" hreflang="fr" href="https://r4c0n7.github.io/SoloBitSafe/fr/changelog.html">
+<link rel="alternate" hreflang="x-default" href="https://r4c0n7.github.io/SoloBitSafe/changelog.html">
+<meta property="og:title" content="Cambios – SoloBitSafe">
+<meta property="og:description" content="Qué ha cambiado, día a día, desde el inicio del proyecto el 8 de octubre de 2026.">
+<meta property="og:image" content="https://r4c0n7.github.io/SoloBitSafe/img/display/3b-wallet-entsperrt.webp">
+<meta property="og:url" content="https://r4c0n7.github.io/SoloBitSafe/es/changelog.html">
+<meta name="theme-color" content="#1c232d">
+<link rel="icon" href="../img/mark.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600&family=Barlow+Condensed:wght@600;700&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../style.css">
+</head>
+<body>
+<a class="sprung" href="#inhalt">Cómo funciona</a>
+<header class="leiste">
+<a class="marke" href="../es/"><img src="../img/mark.svg" alt="" width="32" height="32"><span>SoloBitSafe</span></a>
+<nav class="nav" aria-label="SoloBitSafe"><a href="../es/#ablauf">Cómo funciona</a><a href="../es/#ansichten">Pantallas</a><a href="../es/#technik">Técnica</a><a href="../es/#aenderungen">Cambios</a><a href="../es/#unterstuetzen">Apoyar</a></nav>
+<nav class="sprachen" aria-label="Idioma"><a href="../changelog.html" hreflang="en" lang="en">EN</a><a href="../de/changelog.html" hreflang="de" lang="de">DE</a><a href="../es/changelog.html" hreflang="es" lang="es" aria-current="true">ES</a><a href="../fr/changelog.html" hreflang="fr" lang="fr">FR</a></nav>
+</header>
+<main id="inhalt" class="schmal">
+<p><a href="./">Volver al inicio</a></p>
+<h1>Cambios</h1>
+<p class="text">Qué ha cambiado, día a día, desde el inicio del proyecto el 8 de octubre de 2026.</p>
+<div class="log"><article class="tag" id="t2026-10-16"><h3><time datetime="2026-10-16">16 de octubre de 2026</time><span class="neu">Más reciente</span></h3><ul><li>Secure Boot v2 y cifrado de la flash preparados: compilación del bootloader, imágenes firmadas, recuperación por USB, prueba en seco</li><li>Clave de Bluetooth introducida en la app también en Android; bloqueo de la app con huella o Windows Hello</li><li>Indicador de bloqueo con tiempo restante en la app; bloquear vuelve a la pantalla de contraseña</li><li>Saldo del dispositivo visible al instante, caché de descriptores, sincronización parcial, Electrum como servidor por defecto</li><li>Los contactos aparecen como sugerencias en el campo del destinatario</li><li>Las compilaciones de versión se inician a mano</li></ul></article><article class="tag" id="t2026-10-15"><h3><time datetime="2026-10-15">15 de octubre de 2026</time><span class="version">V1.0.1b</span></h3><ul><li>Versión V1.0.1b en firmware, app y documentación</li><li>Windows: instalador MSI y ZIP portable; emparejamiento Bluetooth mediante la API de Windows</li><li>Recepción en la dirección principal con el logotipo en el código QR</li><li>Bluetooth ya no se reinicia tras emparejar mientras el monedero está desbloqueado</li></ul></article><article class="tag" id="t2026-10-14"><h3><time datetime="2026-10-14">14 de octubre de 2026</time></h3><ul><li>Encontrar el dispositivo en la red local por nombre o última dirección</li><li>Emparejamiento confirmado en la pantalla, sincronización en paralelo, tiempo de bloqueo en vivo</li><li>Bluetooth vuelve a funcionar junto a Wi-Fi, TLS y el minero</li><li>Watchdog contra bloqueos; corregido el fallo al desbloquear por Bluetooth</li></ul></article><article class="tag" id="t2026-10-13"><h3><time datetime="2026-10-13">13 de octubre de 2026</time></h3><ul><li>Nuevo nombre SoloBitSafe con el logotipo de caja fuerte y moneda en dispositivo, web y app</li><li>Refuerzo: borrar el monedero solo en el dispositivo, protección CSRF, límite por dirección, longitud mínima de contraseña</li><li>Actualizaciones aceptadas solo con firma Ed25519</li><li>Minero: comprobación más estricta de los datos del pool, núcleo por software más rápido</li></ul></article><article class="tag" id="t2026-10-12"><h3><time datetime="2026-10-12">12 de octubre de 2026</time></h3><ul><li>Primera versión de la app para Android, Windows y Linux</li><li>Enviar, subir comisión, cancelar y CPFP; encontrar y reunir fondos de otras direcciones</li><li>Emparejar la app solo tras comparar la huella digital y pulsar BTN1</li><li>Varios monederos en la app</li></ul></article><article class="tag" id="t2026-10-11"><h3><time datetime="2026-10-11">11 de octubre de 2026</time></h3><ul><li>Canal USB para la app con firma solo tras BTN1</li><li>Compatible con Jade: Electrum, Sparrow y HWI reconocen el dispositivo</li><li>Introducir las palabras en el dispositivo; restaurar desde la app o el navegador solo tras BTN1</li><li>Órdenes Bluetooth y descriptores para los cuatro tipos de dirección</li></ul></article><article class="tag" id="t2026-10-10"><h3><time datetime="2026-10-10">10 de octubre de 2026</time></h3><ul><li>Recibir y enviar con direcciones Taproot, SegWit anidado y legacy</li><li>Firmas Schnorr (BIP340) y ajuste de clave Taproot</li><li>Minería: corregido el fallo de midstate, +16 % de hashrate, comprobación independiente de shares, cambio de pool</li></ul></article><article class="tag" id="t2026-10-09"><h3><time datetime="2026-10-09">9 de octubre de 2026</time></h3><ul><li>Pepper grabado en eFuse; primeras transacciones en mainnet enviadas y confirmadas</li><li>Panel web con historial, importes en euros y dólares, Signet</li><li>Pantalla rediseñada; código QR visible con el monedero bloqueado</li><li>Actualizaciones por el aire con vuelta atrás</li></ul></article><article class="tag" id="t2026-10-08"><h3><time datetime="2026-10-08">8 de octubre de 2026</time></h3><ul><li>Inicio del proyecto sobre NerdMiner V2</li><li>Caja fuerte de la semilla con Argon2id y AES-256-GCM, agenda cifrada</li><li>Derivación BIP84, ECDSA determinista, transacciones SegWit verificadas con Electrum</li><li>Particiones de 16 MB, API HTTPS, panel y firma de PSBT</li></ul></article></div>
+<section class="block" id="unterstuetzen"><h2>Apoyar</h2><div class="spende">
+<img class="qr" src="../img/spende-qr.svg" alt="Código QR de la dirección de donación" width="240" height="240">
+<div>
+<p class="spende-label">Dirección de donación (Bitcoin)</p>
+<p class="adresse" data-adresse="bc1q8draqujtwuy9gx799n0e5vylvx4aftrvd90trr"><code>bc1q 8dra qujt wuy9 gx79 9n0e 5vyl vx4a ftrv d90t rr</code></p>
+<p class="aktionen">
+<button type="button" class="knopf primaer" data-kopieren data-fertig="Copiada">Copiar dirección</button>
+<a class="knopf" href="bitcoin:bc1q8draqujtwuy9gx799n0e5vylvx4aftrvd90trr">Abrir en el monedero</a>
+</p>
+</div>
+</div></section>
+</main>
+<footer class="fuss">
+<p>Los repositorios del firmware y de la app son privados por ahora. <a href="https://github.com/r4c0n7/SoloBitSafe">Código de este sitio web</a></p>
+<p class="klein">Basado en NerdMiner V2 de BitMaker (MIT), trezor-crypto (MIT), Argon2 (CC0/Apache 2.0), TFT_eSPI, NimBLE-Arduino. Tipografías: Barlow y JetBrains Mono (SIL OFL).</p>
+</footer>
+<script src="../seite.js" defer></script>
+</body>
+</html>
