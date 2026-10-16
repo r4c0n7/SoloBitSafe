@@ -138,7 +138,7 @@ def log_eintraege(s, t, anzahl=None):
         if i == 0:
             kennung += f'<span class="neu">{e(t["neueste"])}</span>'
         liste = "".join(f"<li>{e(p)}</li>" for p in punkte[s])
-        aus += f'<article class="tag" id="t{tag}"><h3><time datetime="{tag}">{DATUM[s](int(d), int(m))}</time>{kennung}</h3><ul>{liste}</ul></article>'
+        aus += f'<article class="tag" id="t{tag}{'-' + version if version else ''}"><h3><time datetime="{tag}">{DATUM[s](int(d), int(m))}</time>{kennung}</h3><ul>{liste}</ul></article>'
     return aus
 
 

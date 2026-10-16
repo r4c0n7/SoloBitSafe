@@ -1,4 +1,4 @@
-VERSION = "V1.0.2b"
+VERSION = "V1.0.3b"
 SPENDE = "bc1q8draqujtwuy9gx799n0e5vylvx4aftrvd90trr"
 
 SPRACHEN = {"en": "English", "de": "Deutsch", "es": "Español", "fr": "Français"}
@@ -42,7 +42,7 @@ T = {
         ],
         "app_h": "App",
         "app": [
-            "Android, Windows and Linux, in English, German, Spanish and French.",
+            "Android, Windows and Linux, in English, German, Spanish and French – the same language as the device display and the web dashboard.",
             "Balance, history, coins, addresses, contacts and PSBT files in one place.",
             "Fee bump (RBF), cancel and CPFP; change always returns to the main address.",
             "Several wallets, app lock with fingerprint or Windows Hello.",
@@ -136,7 +136,7 @@ T = {
         ],
         "app_h": "App",
         "app": [
-            "Android, Windows und Linux, auf Deutsch, Englisch, Spanisch und Französisch.",
+            "Android, Windows und Linux, auf Deutsch, Englisch, Spanisch und Französisch – in derselben Sprache wie Gerätedisplay und Web-Dashboard.",
             "Guthaben, Verlauf, Coins, Adressen, Kontakte und PSBT-Dateien an einem Ort.",
             "Gebühr erhöhen (RBF), Stornieren und CPFP; Wechselgeld geht immer an die Hauptadresse.",
             "Mehrere Wallets, App-Sperre mit Fingerabdruck oder Windows Hello.",
@@ -230,7 +230,7 @@ T = {
         ],
         "app_h": "App",
         "app": [
-            "Android, Windows y Linux, en inglés, alemán, español y francés.",
+            "Android, Windows y Linux, en inglés, alemán, español y francés, con el mismo idioma que la pantalla del dispositivo y el panel web.",
             "Saldo, historial, monedas, direcciones, contactos y archivos PSBT en un solo lugar.",
             "Subir comisión (RBF), cancelar y CPFP; el cambio vuelve siempre a la dirección principal.",
             "Varios monederos y bloqueo de la app con huella o Windows Hello.",
@@ -324,7 +324,7 @@ T = {
         ],
         "app_h": "Appli",
         "app": [
-            "Android, Windows et Linux, en anglais, allemand, espagnol et français.",
+            "Android, Windows et Linux, en anglais, allemand, espagnol et français – la même langue que l'écran de l'appareil et le tableau de bord web.",
             "Solde, historique, pièces, adresses, contacts et fichiers PSBT au même endroit.",
             "Augmenter les frais (RBF), annuler et CPFP ; la monnaie revient toujours à l'adresse principale.",
             "Plusieurs portefeuilles, verrouillage de l'appli par empreinte ou Windows Hello.",
@@ -390,6 +390,28 @@ DATUM = {
 }
 
 LOG = [
+    ("2026-10-16", "V1.0.3b", {
+        "en": ["Version V1.0.3b",
+               "One language everywhere: device display, web dashboard and app follow the language set on the device, default English",
+               "The device display is now available in English, German, Spanish and French",
+               "Changing the language in the app, the dashboard or the wallet page applies everywhere at once",
+               "Fixed: the check mark on the display was missing from the built-in font"],
+        "de": ["Version V1.0.3b",
+               "Eine Sprache überall: Gerätedisplay, Web-Dashboard und App folgen der Gerätesprache, Standard Englisch",
+               "Das Gerätedisplay gibt es jetzt auf Englisch, Deutsch, Spanisch und Französisch",
+               "Eine Sprachänderung in App, Dashboard oder Wallet-Seite gilt sofort überall",
+               "Behoben: das Häkchen auf dem Display fehlte in der eingebauten Schrift"],
+        "es": ["Versión V1.0.3b",
+               "Un solo idioma en todas partes: pantalla, panel web y app siguen el idioma del dispositivo, por defecto inglés",
+               "La pantalla del dispositivo ya está en inglés, alemán, español y francés",
+               "Cambiar el idioma en la app, el panel o la página del monedero se aplica en todas partes",
+               "Corregido: la marca de verificación faltaba en la fuente de la pantalla"],
+        "fr": ["Version V1.0.3b",
+               "Une seule langue partout : écran, tableau de bord web et appli suivent la langue de l'appareil, anglais par défaut",
+               "L'écran de l'appareil existe désormais en anglais, allemand, espagnol et français",
+               "Changer la langue dans l'appli, le tableau de bord ou la page portefeuille s'applique partout",
+               "Corrigé : la coche de l'écran manquait dans la police intégrée"],
+    }),
     ("2026-10-16", "V1.0.2b", {
         "en": ["Version V1.0.2b",
                "Updates carry a signed version number; older firmware is rejected",

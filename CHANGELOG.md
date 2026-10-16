@@ -4,6 +4,14 @@ What changed, day by day, since the project started on 8 October 2026.
 
 Website: https://r4c0n7.github.io/SoloBitSafe/changelog.html
 
+## 2026-10-16 – V1.0.3b
+
+- Version V1.0.3b
+- One language everywhere: device display, web dashboard and app follow the language set on the device, default English
+- The device display is now available in English, German, Spanish and French
+- Changing the language in the app, the dashboard or the wallet page applies everywhere at once
+- Fixed: the check mark on the display was missing from the built-in font
+
 ## 2026-10-16 – V1.0.2b
 
 - Version V1.0.2b
