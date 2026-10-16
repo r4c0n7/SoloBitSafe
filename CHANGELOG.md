@@ -4,6 +4,12 @@ What changed, day by day, since the project started on 8 October 2026.
 
 Website: https://r4c0n7.github.io/SoloBitSafe/changelog.html
 
+## 2026-10-16 – V1.0.4b
+
+- Version V1.0.4b
+- Bluetooth pairings are forgotten when a wallet is created, restored or deleted
+- More detailed memory diagnostics while Bluetooth is on, as groundwork for the stable release
+
 ## 2026-10-16 – V1.0.3b
 
 - Version V1.0.3b

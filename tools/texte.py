@@ -1,4 +1,4 @@
-VERSION = "V1.0.3b"
+VERSION = "V1.0.4b"
 SPENDE = "bc1q8draqujtwuy9gx799n0e5vylvx4aftrvd90trr"
 
 SPRACHEN = {"en": "English", "de": "Deutsch", "es": "Español", "fr": "Français"}
@@ -390,6 +390,20 @@ DATUM = {
 }
 
 LOG = [
+    ("2026-10-16", "V1.0.4b", {
+        "en": ["Version V1.0.4b",
+               "Bluetooth pairings are forgotten when a wallet is created, restored or deleted",
+               "More detailed memory diagnostics while Bluetooth is on, as groundwork for the stable release"],
+        "de": ["Version V1.0.4b",
+               "Bluetooth-Kopplungen verfallen, wenn eine Wallet angelegt, wiederhergestellt oder gelöscht wird",
+               "Genauere Speicherdiagnose bei eingeschaltetem Bluetooth als Vorbereitung auf die stabile Version"],
+        "es": ["Versión V1.0.4b",
+               "Los emparejamientos Bluetooth se olvidan al crear, restaurar o borrar un monedero",
+               "Diagnóstico de memoria más detallado con Bluetooth activo, como preparación para la versión estable"],
+        "fr": ["Version V1.0.4b",
+               "Les appairages Bluetooth sont oubliés à la création, la restauration ou la suppression d'un portefeuille",
+               "Diagnostic mémoire plus précis avec le Bluetooth actif, en préparation de la version stable"],
+    }),
     ("2026-10-16", "V1.0.3b", {
         "en": ["Version V1.0.3b",
                "One language everywhere: device display, web dashboard and app follow the language set on the device, default English",
