@@ -1,4 +1,4 @@
-VERSION = "V1.0.4b"
+VERSION = "V1.0.5b"
 SPENDE = "bc1q8draqujtwuy9gx799n0e5vylvx4aftrvd90trr"
 
 SPRACHEN = {"en": "English", "de": "Deutsch", "es": "Español", "fr": "Français"}
@@ -390,6 +390,20 @@ DATUM = {
 }
 
 LOG = [
+    ("2026-10-16", "V1.0.5b", {
+        "en": ["Version V1.0.5b",
+               "Fixed: the display froze while Bluetooth was on, so a language change from the app did not show up",
+               "Fixed: after unlocking over Bluetooth the display showed \"in the app\" instead of the balance and no last transaction"],
+        "de": ["Version V1.0.5b",
+               "Behoben: das Display stand still, solange Bluetooth an war – ein Sprachwechsel aus der App war nicht zu sehen",
+               "Behoben: nach dem Entsperren über Bluetooth zeigte das Display „in der App“ statt des Guthabens und keine letzte Transaktion"],
+        "es": ["Versión V1.0.5b",
+               "Corregido: la pantalla se quedaba congelada con Bluetooth activo y no se veía el cambio de idioma de la app",
+               "Corregido: tras desbloquear por Bluetooth la pantalla mostraba «en la app» en lugar del saldo y sin última transacción"],
+        "fr": ["Version V1.0.5b",
+               "Corrigé : l'écran restait figé avec le Bluetooth actif, un changement de langue depuis l'appli ne s'affichait pas",
+               "Corrigé : après un déverrouillage par Bluetooth, l'écran affichait « dans l'appli » au lieu du solde et aucune dernière transaction"],
+    }),
     ("2026-10-16", "V1.0.4b", {
         "en": ["Version V1.0.4b",
                "Bluetooth pairings are forgotten when a wallet is created, restored or deleted",

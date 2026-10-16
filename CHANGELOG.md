@@ -4,6 +4,12 @@ What changed, day by day, since the project started on 8 October 2026.
 
 Website: https://r4c0n7.github.io/SoloBitSafe/changelog.html
 
+## 2026-10-16 – V1.0.5b
+
+- Version V1.0.5b
+- Fixed: the display froze while Bluetooth was on, so a language change from the app did not show up
+- Fixed: after unlocking over Bluetooth the display showed "in the app" instead of the balance and no last transaction
+
 ## 2026-10-16 – V1.0.4b
 
 - Version V1.0.4b
