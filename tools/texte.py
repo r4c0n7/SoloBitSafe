@@ -1,4 +1,4 @@
-VERSION = "V1.0.7b"
+VERSION = "V1.0.8b"
 SPENDE = "bc1q8draqujtwuy9gx799n0e5vylvx4aftrvd90trr"
 
 SPRACHEN = {"en": "English", "de": "Deutsch", "es": "Español", "fr": "Français"}
@@ -390,6 +390,16 @@ DATUM = {
 }
 
 LOG = [
+    ("2026-10-16", "V1.0.8b", {
+        "en": ["Version V1.0.8b",
+               "Web dashboard and wallet page: labels with higher contrast and slightly larger small text"],
+        "de": ["Version V1.0.8b",
+               "Web-Dashboard und Wallet-Seite: Beschriftungen mit mehr Kontrast und etwas größere kleine Schrift"],
+        "es": ["Versión V1.0.8b",
+               "Panel web y página del monedero: etiquetas con más contraste y texto pequeño algo más grande"],
+        "fr": ["Version V1.0.8b",
+               "Tableau de bord web et page portefeuille : libellés plus contrastés et petit texte un peu plus grand"],
+    }),
     ("2026-10-16", "V1.0.7b", {
         "en": ["Version V1.0.7b",
                "New: change the passphrase from the app – current passphrase plus BTN1 on the device; seed, balance and address book stay the same",
