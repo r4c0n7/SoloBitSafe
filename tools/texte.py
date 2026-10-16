@@ -392,13 +392,17 @@ DATUM = {
 LOG = [
     ("2026-10-16", "V1.0.7b", {
         "en": ["Version V1.0.7b",
-               "New: change the passphrase from the app – current passphrase plus BTN1 on the device; seed, balance and address book stay the same"],
+               "New: change the passphrase from the app – current passphrase plus BTN1 on the device; seed, balance and address book stay the same",
+               "Website: interactive 3D model of the board showing where BTN1 and BTN2 are"],
         "de": ["Version V1.0.7b",
-               "Neu: Passphrase in der App ändern – aktuelle Passphrase plus BTN1 am Gerät; Seed, Guthaben und Adressbuch bleiben erhalten"],
+               "Neu: Passphrase in der App ändern – aktuelle Passphrase plus BTN1 am Gerät; Seed, Guthaben und Adressbuch bleiben erhalten",
+               "Website: drehbares 3D-Modell des Boards mit der Lage von BTN1 und BTN2"],
         "es": ["Versión V1.0.7b",
-               "Nuevo: cambiar la contraseña desde la app – contraseña actual más BTN1 en el dispositivo; semilla, saldo y agenda se conservan"],
+               "Nuevo: cambiar la contraseña desde la app – contraseña actual más BTN1 en el dispositivo; semilla, saldo y agenda se conservan",
+               "Web: modelo 3D interactivo de la placa con la posición de BTN1 y BTN2"],
         "fr": ["Version V1.0.7b",
-               "Nouveau : changer la phrase secrète depuis l'appli – phrase actuelle plus BTN1 sur l'appareil ; graine, solde et carnet sont conservés"],
+               "Nouveau : changer la phrase secrète depuis l'appli – phrase actuelle plus BTN1 sur l'appareil ; graine, solde et carnet sont conservés",
+               "Site : modèle 3D interactif de la carte montrant BTN1 et BTN2"],
     }),
     ("2026-10-16", "V1.0.6b", {
         "en": ["Version V1.0.6b",

@@ -48,6 +48,7 @@ def kopf(s, t, seite, titel, beschreibung):
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600&family=Barlow+Condensed:wght@600;700&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="{hoch}style.css">
+{'<script type="importmap">{"imports":{"three":"https://cdn.jsdelivr.net/npm/three@0.170.0/build/three.module.js","three/addons/":"https://cdn.jsdelivr.net/npm/three@0.170.0/examples/jsm/"}}</script>' + chr(10) + f'<script type="module" src="{hoch}geraet3d.js"></script>' if seite == "" else ""}
 </head>
 <body>
 <a class="sprung" href="#inhalt">{e(t["nav"][0])}</a>
@@ -94,7 +95,9 @@ def geraet(s, t):
         + ">"
         for n in ["0-start", "1-mining", "3b-wallet-entsperrt", "4a-beleg-kontakt"]
     )
+    daten = ",".join(f"{hoch}img/display/{s}/{n}.webp" for n in ["0-start", "1-mining", "3b-wallet-entsperrt", "4a-beleg-kontakt"])
     return f"""<figure class="geraet" role="img" aria-label="{e(t["geraet_alt"])}">
+<div class="geraet-3d" data-bilder="{daten}" data-btn1="BTN1 · BOOT" data-btn2="BTN2 · IO14"></div>
 <div class="platine">
 <span class="usb"></span>
 <span class="taste t1"><span class="taste-name">{t["btn1"]}</span></span>

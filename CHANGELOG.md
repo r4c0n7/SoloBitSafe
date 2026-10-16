@@ -8,6 +8,7 @@ Website: https://r4c0n7.github.io/SoloBitSafe/changelog.html
 
 - Version V1.0.7b
 - New: change the passphrase from the app – current passphrase plus BTN1 on the device; seed, balance and address book stay the same
+- Website: interactive 3D model of the board showing where BTN1 and BTN2 are
 
 ## 2026-10-16 – V1.0.6b
 

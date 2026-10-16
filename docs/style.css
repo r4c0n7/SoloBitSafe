@@ -89,7 +89,7 @@ main { display: block; }
 
 .geraet { margin: 0; }
 .platine {
-  position: relative; aspect-ratio: 1.86; padding: 7% 13% 7% 6%;
+  position: relative; aspect-ratio: 2.38; padding: 4% 6% 4% 15%;
   background: linear-gradient(160deg, #0f1318, #191f27 60%, #0d1014);
   border-radius: 22px;
   box-shadow: inset 0 0 0 1px #2c3542, 0 30px 60px -30px rgba(0, 0, 0, .8);
@@ -99,10 +99,10 @@ main { display: block; }
   transform: translateY(-50%); background: #2a323d; box-shadow: 0 -2.2rem 0 #2a323d, 0 2.2rem 0 #2a323d;
 }
 .usb { position: absolute; left: -2.4%; top: 50%; width: 3.4%; height: 18%; transform: translateY(-50%); background: #9aa3ad; border-radius: 4px 0 0 4px; }
-.taste { position: absolute; top: -3%; width: 9%; height: 4.5%; border-radius: 4px 4px 0 0; background: #3a4452; }
-.t1 { left: 10%; }
-.t2 { left: 22%; }
-.taste-name { position: absolute; bottom: 140%; left: 50%; transform: translateX(-50%); font: 600 .8rem/1 Barlow, sans-serif; color: var(--gedimmt); white-space: nowrap; }
+.taste { position: absolute; left: 2.2%; width: 6%; height: 11%; border-radius: 4px; background: #3a4452; box-shadow: inset 0 0 0 2px #59636f; }
+.t1 { top: 12%; }
+.t2 { bottom: 12%; }
+.taste-name { position: absolute; bottom: 130%; left: 0; font: 600 .8rem/1 Barlow, sans-serif; color: var(--gedimmt); white-space: nowrap; }
 .schirm { position: relative; height: 100%; border-radius: 6px; overflow: hidden; background: #000; box-shadow: 0 0 0 3px #05070a; }
 .schirm img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0; animation: wechsel 16s infinite; }
 .schirm img:nth-child(1) { animation-delay: 0s; }
@@ -224,3 +224,16 @@ main { display: block; }
 .anleitung ul { margin: 0; padding-left: 1.1rem; color: var(--gedimmt); }
 .anleitung ul li { margin: .35rem 0; }
 @media (max-width: 34rem) { .tasten .technik { grid-template-columns: 1fr; } }
+
+.geraet { position: relative; }
+.geraet-3d { position: relative; width: 100%; }
+.geraet-3d canvas { display: block; width: 100%; height: auto; cursor: grab; touch-action: pan-y; }
+.geraet-3d canvas:active { cursor: grabbing; }
+.geraet-etiketten { position: absolute; inset: 0; pointer-events: none; }
+.geraet.mit-3d .platine { display: none; }
+.etikett {
+  font: 600 .78rem/1 "JetBrains Mono", ui-monospace, monospace; color: var(--text);
+  background: rgba(28, 35, 45, .86); border: 1px solid var(--linie); border-radius: 6px; padding: .28rem .45rem; white-space: nowrap;
+}
+.etikett.btn1 { border-color: var(--orange); color: var(--orange); }
+.etikett.rst, .etikett.usb { color: var(--gedimmt); font-size: .7rem; }
