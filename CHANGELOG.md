@@ -4,6 +4,11 @@ What changed, day by day, since the project started on 8 October 2026.
 
 Website: https://r4c0n7.github.io/SoloBitSafe/changelog.html
 
+## 2026-10-16 – V1.0.7b
+
+- Version V1.0.7b
+- New: change the passphrase from the app – current passphrase plus BTN1 on the device; seed, balance and address book stay the same
+
 ## 2026-10-16 – V1.0.6b
 
 - Version V1.0.6b

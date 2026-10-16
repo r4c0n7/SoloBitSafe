@@ -1,4 +1,4 @@
-VERSION = "V1.0.6b"
+VERSION = "V1.0.7b"
 SPENDE = "bc1q8draqujtwuy9gx799n0e5vylvx4aftrvd90trr"
 
 SPRACHEN = {"en": "English", "de": "Deutsch", "es": "Español", "fr": "Français"}
@@ -390,6 +390,16 @@ DATUM = {
 }
 
 LOG = [
+    ("2026-10-16", "V1.0.7b", {
+        "en": ["Version V1.0.7b",
+               "New: change the passphrase from the app – current passphrase plus BTN1 on the device; seed, balance and address book stay the same"],
+        "de": ["Version V1.0.7b",
+               "Neu: Passphrase in der App ändern – aktuelle Passphrase plus BTN1 am Gerät; Seed, Guthaben und Adressbuch bleiben erhalten"],
+        "es": ["Versión V1.0.7b",
+               "Nuevo: cambiar la contraseña desde la app – contraseña actual más BTN1 en el dispositivo; semilla, saldo y agenda se conservan"],
+        "fr": ["Version V1.0.7b",
+               "Nouveau : changer la phrase secrète depuis l'appli – phrase actuelle plus BTN1 sur l'appareil ; graine, solde et carnet sont conservés"],
+    }),
     ("2026-10-16", "V1.0.6b", {
         "en": ["Version V1.0.6b",
                "Security review: parsers for PSBT, Jade, commands and frames fuzzed with AddressSanitizer and UBSan – no findings",
