@@ -3,7 +3,7 @@ import { spawn } from "node:child_process";
 import { createInterface } from "node:readline";
 import { SerialPort } from "serialport";
 import { ESPLoader, Transport } from "esptool-js";
-import { flashen, laden, loeschen, pepperEinrichten } from "../../docs/flasher-kern.js";
+import { flashen, laden, loeschen, pepperEinrichten, startAbwarten } from "../../docs/flasher-kern.js";
 
 class NodePort {
   constructor(pfad) {
@@ -84,6 +84,12 @@ const holen = async (url) => {
   const daten = readFileSync(new URL(url).pathname.replace(/^\/basis\//, `${ordner}/`));
   return { ok: true, arrayBuffer: async () => daten.buffer.slice(daten.byteOffset, daten.byteOffset + daten.length) };
 };
+if (art === "start") {
+  const t0 = Date.now();
+  const ok = await startAbwarten({ port: new NodePort(pfad()), frist: 120000, log: (t) => console.log("  " + t) });
+  console.log("start erkannt", ok, Math.round((Date.now() - t0) / 1000), "s");
+  process.exit(0);
+}
 if (art === "pepper") {
   const ok = await pepperEinrichten({ port: new NodePort(pfad()), start: 0, befehlNach: Number(process.argv[4] || 25000), log: (t) => console.log("  " + t), melden: (t) => console.log("  > " + t) });
   console.log("pepper fertig", ok);

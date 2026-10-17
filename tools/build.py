@@ -287,6 +287,7 @@ def flash(s):
 <fieldset><legend>{e(f["art_h"])}</legend>{arten}</fieldset>
 <fieldset class="variante" hidden><legend>{e(f["variante_h"])}</legend>{varianten}<p class="text klein" id="flash-bald" hidden></p></fieldset>
 <label class="bestaetigen" hidden><input type="checkbox" id="flash-ok"> {e(f["bestaetigen"])}</label>
+<label class="bestaetigen bestaetigen-haerten" hidden><input type="checkbox" id="flash-haerten-ok"> {e(f["bestaetigen_haerten"])}</label>
 <p class="aktionen"><button type="button" class="knopf primaer" id="flash-start" disabled>{e(f["start"])}</button></p>
 <div class="flash-balken" hidden><div id="flash-balken"></div></div>
 <p class="flash-status" id="flash-status" role="status" aria-live="polite"></p>

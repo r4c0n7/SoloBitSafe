@@ -250,6 +250,7 @@ export class GeraetKanal {
   }
 
   async oeffnen() {
+    this.zu = false;
     await this.port.open({ baudRate: 115200 });
     this.leser = this.port.readable.getReader();
     this.lauf = this.lesen();
@@ -270,6 +271,7 @@ export class GeraetKanal {
         if (this.text.length > 65536) this.text = this.text.slice(-16384);
       }
     } catch {}
+    this.zu = true;
   }
 
   antworten() {
@@ -303,6 +305,36 @@ export class GeraetKanal {
     try { await this.leser.cancel(); } catch {}
     try { this.leser.releaseLock(); } catch {}
     try { await this.port.close(); } catch {}
+  }
+}
+
+export async function startAbwarten({ port, log = () => {}, warten, frist = 240000 }) {
+  const pause = warten || ((ms) => new Promise((r) => setTimeout(r, ms)));
+  const k = new GeraetKanal(port);
+  let offen = false;
+  const beginn = Date.now();
+  try {
+    while (Date.now() - beginn < frist) {
+      if (!offen) {
+        try {
+          await k.oeffnen();
+          offen = true;
+        } catch (e) {
+          log(`start: Port ${e.message || e}`);
+          await pause(1000);
+          continue;
+        }
+      }
+      if (/Pepper: (vorhanden|gebrannt)/.test(k.text)) return true;
+      if (k.zu) {
+        await k.schliessen();
+        offen = false;
+      }
+      await pause(500);
+    }
+    throw new FlashFehler("gehaertet_kein_start");
+  } finally {
+    if (offen) await k.schliessen();
   }
 }
 

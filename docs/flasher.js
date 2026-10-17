@@ -1,5 +1,5 @@
 import { ESPLoader, Transport } from "esptool-js";
-import { flashen, laden, loeschen, pepperEinrichten, FlashFehler } from "./flasher-kern.js";
+import { flashen, laden, loeschen, pepperEinrichten, startAbwarten, FlashFehler } from "./flasher-kern.js";
 
 const VID = 0x303a;
 const bereich = document.querySelector(".flasher");
@@ -29,18 +29,22 @@ const variante = () => document.querySelector('input[name="variante"]:checked').
 const variantenFeld = document.querySelector(".variante");
 const gehaertetWahl = document.querySelector('input[name="variante"][value="gehaertet"]');
 const bald = document.getElementById("flash-bald");
+const haertenBest = document.querySelector(".bestaetigen-haerten");
+const haertenOk = document.getElementById("flash-haerten-ok");
 
 function freigeben() {
   const a = art();
   const gefaehrlich = a === "komplett" || a === "loeschen";
   variantenFeld.hidden = a !== "komplett";
+  const haerten = a === "komplett" && variante() === "gehaertet";
+  haertenBest.hidden = !haerten;
   const gehaertetFrei = !!manifest?.gehaertet_freigegeben;
   gehaertetWahl.disabled = !gehaertetFrei;
   bald.hidden = gehaertetFrei;
   bald.textContent = texte.bald;
   if (!gehaertetFrei && gehaertetWahl.checked) document.querySelector('input[name="variante"][value="standard"]').checked = true;
   bestaetigen.hidden = !gefaehrlich;
-  knopf.disabled = laeuft || !manifest || !("serial" in navigator) || (gefaehrlich && !ok.checked);
+  knopf.disabled = laeuft || !manifest || !("serial" in navigator) || (gefaehrlich && !ok.checked) || (haerten && !haertenOk.checked);
 }
 
 const terminal = {
@@ -143,7 +147,12 @@ async function starten() {
         },
         fortschritt,
       });
-      if (stufen[i] === "gehaertet") break;
+      if (stufen[i] === "gehaertet") {
+        melden("erststart");
+        await startAbwarten({ port, log });
+        melden("gehaertet_ok", { v: manifest.version });
+        return;
+      }
       melden("pepper_warte");
       await pepperEinrichten({ port, log, melden: (k) => melden(k) });
     }
@@ -160,6 +169,7 @@ async function starten() {
 
 document.querySelectorAll('input[name="art"], input[name="variante"]').forEach((r) => r.addEventListener("change", freigeben));
 ok.addEventListener("change", freigeben);
+haertenOk.addEventListener("change", freigeben);
 knopf.addEventListener("click", starten);
 
 if (!("serial" in navigator)) melden("kein_serial", {}, true);

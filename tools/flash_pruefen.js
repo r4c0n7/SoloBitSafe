@@ -84,6 +84,33 @@ const server = http.createServer((req, res) => {
     }
     await p.close();
   }
+  {
+    const p = await b.newPage({ viewport: { width: 1366, height: 900 } });
+    p.on('pageerror', (e) => fehler.push(`haerten pageerror ${e}`));
+    await p.route('**/firmware/manifest.json', async (r) => {
+      const m = JSON.parse(fs.readFileSync(path.join(DOCS, 'firmware', 'manifest.json'), 'utf8'));
+      m.gehaertet_freigegeben = true;
+      await r.fulfill({ status: 200, contentType: 'application/json', body: JSON.stringify(m) });
+    });
+    await p.goto('http://127.0.0.1:8091/SoloBitSafe/flash.html', { waitUntil: 'networkidle' });
+    await p.waitForFunction(() => document.getElementById('flash-version').textContent !== '');
+    await p.check('input[value="komplett"]');
+    await p.check('input[name="variante"][value="gehaertet"]');
+    const zustand = () => p.evaluate(() => ({
+      zweite: !document.querySelector('.bestaetigen-haerten').hidden,
+      gesperrt: document.getElementById('flash-start').disabled,
+    }));
+    const a1 = await zustand();
+    await p.check('#flash-ok');
+    const a2 = await zustand();
+    await p.check('#flash-haerten-ok');
+    const a3 = await zustand();
+    await p.check('input[name="variante"][value="standard"]');
+    const a4 = await zustand();
+    console.log('haerten', JSON.stringify([a1, a2, a3, a4]));
+    if (!a1.zweite || !a1.gesperrt || !a2.gesperrt || a3.gesperrt || a4.zweite) fehler.push('Haerten-Bestaetigung falsch');
+    await p.close();
+  }
   await b.close();
   server.close();
   console.log(fehler.length ? 'FEHLER\n' + fehler.join('\n') : 'alles gruen');
