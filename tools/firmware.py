@@ -59,7 +59,7 @@ def main():
         "dateien": dateien,
         "ablaeufe": ABLAEUFE,
         "bereiche": BEREICHE,
-        "gehaertet_freigegeben": False,
+        "gehaertet_freigegeben": True,
     }
     (ZIEL / "manifest.json").write_text(json.dumps(manifest, indent=1) + "\n", encoding="utf-8")
     for name, d in dateien.items():

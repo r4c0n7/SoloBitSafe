@@ -44,11 +44,12 @@ const server = http.createServer((req, res) => {
       if (!gesperrt) fehler.push(`${art} ${s} Komplett ohne Bestaetigung frei`);
       const v = await p.evaluate(() => ({
         sichtbar: !document.querySelector('.variante').hidden,
-        gehaertetAus: document.querySelector('input[name="variante"][value="gehaertet"]').disabled,
-        standard: document.querySelector('input[name="variante"][value="standard"]').checked,
-        bald: !document.getElementById('flash-bald').hidden && document.getElementById('flash-bald').textContent.length > 10,
+        gehaertetFrei: !document.querySelector('input[name="variante"][value="gehaertet"]').disabled,
+        gehaertet: document.querySelector('input[name="variante"][value="gehaertet"]').checked,
+        bald: !document.getElementById('flash-bald').hidden,
+        zweite: !document.querySelector('.bestaetigen-haerten').hidden,
       }));
-      if (!v.sichtbar || !v.gehaertetAus || !v.standard || !v.bald) fehler.push(`${art} ${s} Variante falsch ${JSON.stringify(v)}`);
+      if (!v.sichtbar || !v.gehaertetFrei || !v.gehaertet || v.bald || !v.zweite) fehler.push(`${art} ${s} Variante falsch ${JSON.stringify(v)}`);
       await p.check('input[value="loeschen"]');
       const l = await p.evaluate(() => ({
         variante: document.querySelector('.variante').hidden,
@@ -57,6 +58,8 @@ const server = http.createServer((req, res) => {
       if (!l.variante || !l.best) fehler.push(`${art} ${s} Loeschen ohne Bestaetigung ${JSON.stringify(l)}`);
       await p.check('input[value="komplett"]');
       await p.check('#flash-ok');
+      if (z.serial && !(await p.evaluate(() => document.getElementById('flash-start').disabled))) fehler.push(`${art} ${s} Gehaertet ohne zweite Bestaetigung frei`);
+      await p.check('#flash-haerten-ok');
       if (z.serial && await p.evaluate(() => document.getElementById('flash-start').disabled)) fehler.push(`${art} ${s} Komplett trotz Bestaetigung gesperrt`);
       if (s === '' && art === 'desktop') {
         const geprueft = await p.evaluate(async () => {

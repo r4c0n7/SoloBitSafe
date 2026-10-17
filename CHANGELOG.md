@@ -8,6 +8,8 @@ Website: https://r4c0n7.github.io/SoloBitSafe/changelog.html
 
 - Version V1.0.13b
 - The device's miner dashboard no longer loads fonts from Google – opening it sends nothing to third parties
+- Web flasher: hardened install (Secure Boot + flash encryption) is now available and preselected as the recommended choice, with its own confirmation; it only starts after the chip key is verified and checks the first hardened boot
+- Privacy page, setup guide with the chip key prompt, security policy for reporting vulnerabilities
 
 ## 2026-10-17 – V1.0.12b
 

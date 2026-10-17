@@ -269,7 +269,7 @@ def flash(s):
         for k in ["update", "komplett", "loeschen"]
     )
     varianten = "".join(
-        f'<label class="wahl"><input type="radio" name="variante" value="{k}"{" checked" if k == "standard" else ""}>'
+        f'<label class="wahl"><input type="radio" name="variante" value="{k}"{" checked" if k == "gehaertet" else ""}>'
         f'<span><strong>{e(f[k][0])}</strong><span>{e(f[k][1])}</span></span></label>'
         for k in ["gehaertet", "standard"]
     )

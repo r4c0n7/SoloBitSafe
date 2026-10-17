@@ -391,10 +391,18 @@ DATUM = {
 
 LOG = [
     ("2026-10-17", "V1.0.13b", {
-        "en": ["Version V1.0.13b", "The device's miner dashboard no longer loads fonts from Google – opening it sends nothing to third parties"],
-        "de": ["Version V1.0.13b", "Das Miner-Dashboard des Geräts lädt keine Schriften mehr von Google – beim Öffnen geht nichts an Dritte"],
-        "es": ["Versión V1.0.13b", "El panel de minería del dispositivo ya no carga fuentes de Google: al abrirlo no se envía nada a terceros"],
-        "fr": ["Version V1.0.13b", "Le tableau de bord de minage de l'appareil ne charge plus de polices depuis Google : rien n'est envoyé à des tiers à l'ouverture"],
+        "en": ["Version V1.0.13b", "The device's miner dashboard no longer loads fonts from Google – opening it sends nothing to third parties",
+               "Web flasher: hardened install (Secure Boot + flash encryption) is now available and preselected as the recommended choice, with its own confirmation; it only starts after the chip key is verified and checks the first hardened boot",
+               "Privacy page, setup guide with the chip key prompt, security policy for reporting vulnerabilities"],
+        "de": ["Version V1.0.13b", "Das Miner-Dashboard des Geräts lädt keine Schriften mehr von Google – beim Öffnen geht nichts an Dritte",
+               "Web-Flasher: Die gehärtete Installation (Secure Boot + Flash-Verschlüsselung) ist jetzt verfügbar und als Empfehlung vorausgewählt, mit eigener Bestätigung; sie startet erst nach geprüftem Chip-Schlüssel und kontrolliert den ersten gehärteten Start",
+               "Datenschutzseite, Einrichtungsanleitung mit der Chip-Schlüssel-Frage, Sicherheitsrichtlinie zum Melden von Lücken"],
+        "es": ["Versión V1.0.13b", "El panel de minería del dispositivo ya no carga fuentes de Google: al abrirlo no se envía nada a terceros",
+               "Flasheador web: la instalación reforzada (Secure Boot + cifrado de la flash) ya está disponible y preseleccionada como recomendada, con su propia confirmación; solo empieza tras verificar la clave del chip y comprueba el primer arranque reforzado",
+               "Página de privacidad, guía de instalación con la pregunta de la clave del chip, política de seguridad para avisar de vulnerabilidades"],
+        "fr": ["Version V1.0.13b", "Le tableau de bord de minage de l'appareil ne charge plus de polices depuis Google : rien n'est envoyé à des tiers à l'ouverture",
+               "Flasheur web : l'installation renforcée (Secure Boot + chiffrement de la flash) est disponible et présélectionnée comme recommandée, avec sa propre confirmation ; elle ne démarre qu'après vérification de la clé de la puce et contrôle le premier démarrage renforcé",
+               "Page de confidentialité, guide d'installation avec la question de la clé de la puce, politique de sécurité pour signaler des failles"],
     }),
     ("2026-10-17", "V1.0.12b", {
         "en": ["Version V1.0.12b",
