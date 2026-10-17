@@ -1,4 +1,6 @@
 import { readFileSync, readdirSync, existsSync } from "node:fs";
+import { spawn } from "node:child_process";
+import { createInterface } from "node:readline";
 import { SerialPort } from "serialport";
 import { ESPLoader, Transport } from "esptool-js";
 import { flashen, laden } from "../../docs/flasher-kern.js";
@@ -16,9 +18,11 @@ class NodePort {
   }
 
   async open({ baudRate }) {
-    const sp = new SerialPort({ path: this.pfad, baudRate, autoOpen: false });
+    const sp = new SerialPort({ path: this.pfad, baudRate, autoOpen: false, lock: false });
     await new Promise((ok, fehler) => sp.open((e) => (e ? fehler(e) : ok())));
     this.sp = sp;
+    this.helfer = spawn("python3", [new URL("./signale.py", import.meta.url).pathname, this.pfad], { stdio: ["pipe", "pipe", "inherit"] });
+    this.antworten = createInterface({ input: this.helfer.stdout })[Symbol.asyncIterator]();
     this.readable = new ReadableStream({
       start(c) {
         sp.on("data", (d) => { try { c.enqueue(new Uint8Array(d)); } catch {} });
@@ -37,11 +41,16 @@ class NodePort {
     if (s.dataTerminalReady !== undefined) this.signale.dtr = s.dataTerminalReady;
     if (s.requestToSend !== undefined) this.signale.rts = s.requestToSend;
     if (s.break !== undefined) this.signale.brk = s.break;
-    await new Promise((ok, fehler) => this.sp.set({ ...this.signale }, (e) => (e ? fehler(e) : ok())));
+    this.helfer.stdin.write(`${this.signale.dtr ? 1 : 0} ${this.signale.rts ? 1 : 0}
+`);
+    const { value } = await this.antworten.next();
+    if (value !== "ok") throw new Error("Signale nicht gesetzt");
   }
 
   async close() {
     const sp = this.sp;
+    if (this.helfer) this.helfer.kill();
+    this.helfer = null;
     this.readable = null;
     this.writable = null;
     if (sp && sp.isOpen) await new Promise((ok) => sp.close(() => ok()));
