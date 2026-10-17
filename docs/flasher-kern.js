@@ -122,7 +122,7 @@ export async function flashen({ verbinden, trennen, dateien, art, log = () => {}
     await loader.writeFlash({
       fileArray: dateien.map((d) => ({ data: d.daten, address: d.adresse })),
       flashMode: "keep", flashFreq: "keep", flashSize: "keep",
-      eraseAll: art === "komplett" || art === "gehaertet", compress: true,
+      eraseAll: art === "komplett", compress: true,
       reportProgress: (i, geschrieben, summe) => {
         const vorher = dateien.slice(0, i).reduce((x, d) => x + d.daten.length, 0);
         fortschritt(vorher + Math.round((dateien[i].daten.length * geschrieben) / Math.max(1, summe)), gesamt);
@@ -236,4 +236,130 @@ export async function loeschen({ verbinden, trennen, bereiche, log = () => {}, f
   await neustart(loader).catch(() => {});
   await trennen(loader).catch(() => {});
   return s;
+}
+
+const RS = 0x1e;
+const KENNUNG = "BNL1 ";
+
+export class GeraetKanal {
+  constructor(port) {
+    this.port = port;
+    this.puffer = "";
+    this.text = "";
+    this.id = 1;
+  }
+
+  async oeffnen() {
+    await this.port.open({ baudRate: 115200 });
+    this.leser = this.port.readable.getReader();
+    this.lauf = this.lesen();
+  }
+
+  async lesen() {
+    const dec = new TextDecoder();
+    try {
+      for (;;) {
+        const { value, done } = await this.leser.read();
+        if (done) break;
+        if (value) {
+          const neu = dec.decode(value, { stream: true });
+          this.puffer += neu;
+          this.text += neu;
+        }
+        if (this.puffer.length > 65536) this.puffer = this.puffer.slice(-16384);
+        if (this.text.length > 65536) this.text = this.text.slice(-16384);
+      }
+    } catch {}
+  }
+
+  antworten() {
+    const aus = [];
+    for (;;) {
+      const a = this.puffer.indexOf(String.fromCharCode(RS) + KENNUNG);
+      if (a < 0) break;
+      const e = this.puffer.indexOf("\n", a);
+      if (e < 0) break;
+      const roh = this.puffer.slice(a + 1 + KENNUNG.length, e).trim();
+      this.puffer = this.puffer.slice(e + 1);
+      try { aus.push(JSON.parse(roh)); } catch {}
+    }
+    return aus;
+  }
+
+  async befehl(c, felder = {}, frist = 4000) {
+    const id = this.id++;
+    const text = String.fromCharCode(RS) + KENNUNG + JSON.stringify({ id, c, ...felder }) + "\n";
+    const w = this.port.writable.getWriter();
+    try { await w.write(new TextEncoder().encode(text)); } finally { w.releaseLock(); }
+    const ende = Date.now() + frist;
+    while (Date.now() < ende) {
+      for (const a of this.antworten()) if (a.id === id) return a;
+      await new Promise((r) => setTimeout(r, 50));
+    }
+    throw new FlashFehler("keine_antwort");
+  }
+
+  async schliessen() {
+    try { await this.leser.cancel(); } catch {}
+    try { this.leser.releaseLock(); } catch {}
+    try { await this.port.close(); } catch {}
+  }
+}
+
+export async function pepperEinrichten({ port, log = () => {}, melden = () => {}, warten, start = 300, frist = 120000, befehlNach = 25000 }) {
+  const pause = warten || ((ms) => new Promise((r) => setTimeout(r, ms)));
+  await pause(start);
+  const k = new GeraetKanal(port);
+  let offen = false;
+  for (let v = 0; v < 20 && !offen; v++) {
+    try {
+      await k.oeffnen();
+      offen = true;
+    } catch (e) {
+      log(`pepper: Port ${e.message || e}`);
+      await pause(500);
+    }
+  }
+  if (!offen) throw new FlashFehler("pepper_zeit");
+  const beginn = Date.now();
+  let befehlAb = beginn + befehlNach;
+  let gefragt = false;
+  try {
+    for (;;) {
+      const t = k.text;
+      if (/Pepper: (vorhanden|gebrannt)/.test(t)) {
+        melden("pepper_ok");
+        return true;
+      }
+      if (/Pepper: spaeter/.test(t)) throw new FlashFehler("pepper_abgelehnt");
+      if (/Pepper: (unmoeglich|Fehler)/.test(t)) throw new FlashFehler("pepper_unmoeglich");
+      if (!gefragt && /Pepper: Frage/.test(t)) {
+        gefragt = true;
+        befehlAb = Date.now() + 40000;
+        melden("pepper_btn1");
+      }
+      if (Date.now() - beginn > frist) throw new FlashFehler("pepper_zeit");
+      if (Date.now() >= befehlAb) {
+        befehlAb = Date.now() + 3000;
+        try {
+          const a = await k.befehl("pepper", {}, 2500);
+          log(`pepper ${JSON.stringify(a)}`);
+          if (a.ok) {
+            melden("pepper_ok");
+            return true;
+          }
+          if (a.err === 10 && !gefragt) {
+            gefragt = true;
+            melden("pepper_btn1");
+          } else if (a.err === 11 || a.err === 12) throw new FlashFehler("pepper_abgelehnt");
+          else if (a.err === 28) throw new FlashFehler("pepper_unmoeglich");
+        } catch (e) {
+          if (e instanceof FlashFehler && e.code !== "keine_antwort") throw e;
+        }
+      }
+      await pause(300);
+    }
+  } finally {
+    await k.schliessen();
+  }
 }

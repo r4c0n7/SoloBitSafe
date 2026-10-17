@@ -1,5 +1,5 @@
 import { ESPLoader, Transport } from "esptool-js";
-import { flashen, laden, loeschen, FlashFehler } from "./flasher-kern.js";
+import { flashen, laden, loeschen, pepperEinrichten, FlashFehler } from "./flasher-kern.js";
 
 const VID = 0x303a;
 const bereich = document.querySelector(".flasher");
@@ -118,25 +118,35 @@ async function starten() {
       return;
     }
     melden("laden");
-    let dateien;
-    try {
-      dateien = await laden(basis, manifest, ablauf);
-    } catch (e) {
-      throw e instanceof FlashFehler && e.code === "pruefsumme" ? e : new FlashFehler("laden_fehler");
-    }
-    melden("verbinden");
+    const holen = async (welcher) => {
+      try {
+        return await laden(basis, manifest, welcher);
+      } catch (e) {
+        throw e instanceof FlashFehler && e.code === "pruefsumme" ? e : new FlashFehler("laden_fehler");
+      }
+    };
+    const stufen = ablauf === "gehaertet" ? ["komplett", "gehaertet"] : [ablauf];
+    const saetze = [];
+    for (const st of stufen) saetze.push(await holen(st));
     balken.parentElement.hidden = false;
-    await flashen({
-      verbinden,
-      trennen,
-      dateien,
-      art: ablauf,
-      log: (t) => {
-        log(t);
-        if (t.startsWith("sicherheit")) melden(t.includes("verschluesselt=true") || t.includes("sdm=true") ? "sicher" : "offen");
-      },
-      fortschritt,
-    });
+    for (let i = 0; i < stufen.length; i++) {
+      melden(stufen[i] === "gehaertet" ? "haerten" : "verbinden");
+      balken.style.width = "0";
+      await flashen({
+        verbinden,
+        trennen,
+        dateien: saetze[i],
+        art: stufen[i],
+        log: (t) => {
+          log(t);
+          if (t.startsWith("sicherheit") && stufen[i] !== "gehaertet") melden(t.includes("verschluesselt=true") || t.includes("sdm=true") ? "sicher" : "offen");
+        },
+        fortschritt,
+      });
+      if (stufen[i] === "gehaertet") break;
+      melden("pepper_warte");
+      await pepperEinrichten({ port, log, melden: (k) => melden(k) });
+    }
     melden(ablauf === "gehaertet" ? "erststart" : "fertig", { v: manifest.version });
   } catch (e) {
     const code = e instanceof FlashFehler ? e.code : null;

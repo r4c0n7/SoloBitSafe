@@ -1,4 +1,5 @@
 import html
+import re
 import pathlib
 import sys
 
@@ -14,6 +15,23 @@ URL = "https://r4c0n7.github.io/SoloBitSafe/"
 REPO = "https://github.com/r4c0n7/SoloBitSafe"
 ANKER = ["ablauf", "ansichten", "technik", "aenderungen", "unterstuetzen"]
 e = html.escape
+
+
+def akzent(text):
+    return re.sub(r"\*([^*]+)\*", lambda m: f'<em class="akzent">{m.group(1)}</em>', e(text))
+
+
+TEIL = re.compile(r"(<script\b.*?</script>|<[^>]+>)", re.S)
+
+
+def marke(seite):
+    kopf, trenn, rumpf = seite.partition("<body>")
+    if not trenn:
+        return seite
+    teile = TEIL.split(rumpf)
+    for i in range(0, len(teile), 2):
+        teile[i] = teile[i].replace("SoloBitSafe", 'Solo<span class="bit">Bit</span>Safe')
+    return kopf + trenn + "".join(teile)
 
 
 def pfad(sprache, seite=""):
@@ -181,7 +199,7 @@ def startseite(s):
         + f"""<main id="inhalt">
 <section class="held">
 <div class="held-text">
-<h1>{e(t["h1"])}</h1>
+<h1>{akzent(t["h1"])}</h1>
 <p class="lead">{e(t["lead"])}</p>
 <p class="aktionen"><a class="knopf primaer" href="guide.html">{e(ANLEITUNG[s]["titel"])}</a><a class="knopf" href="flash.html">{e(FLASHER[s]["titel"])}</a><a class="knopf" href="#ansichten">{e(t["knopf_screens"])}</a><a class="knopf" href="changelog.html">{e(t["knopf_log"])}</a></p>
 <p class="stand">{e(t["stand"].format(v=VERSION))}</p>
@@ -297,10 +315,10 @@ def main():
     for s in SPRACHEN:
         ordner = DOCS if s == "en" else DOCS / s
         ordner.mkdir(parents=True, exist_ok=True)
-        (ordner / "index.html").write_text(startseite(s), encoding="utf-8")
-        (ordner / "changelog.html").write_text(changelog(s), encoding="utf-8")
-        (ordner / "guide.html").write_text(anleitung(s), encoding="utf-8")
-        (ordner / "flash.html").write_text(flash(s), encoding="utf-8")
+        (ordner / "index.html").write_text(marke(startseite(s)), encoding="utf-8")
+        (ordner / "changelog.html").write_text(marke(changelog(s)), encoding="utf-8")
+        (ordner / "guide.html").write_text(marke(anleitung(s)), encoding="utf-8")
+        (ordner / "flash.html").write_text(marke(flash(s)), encoding="utf-8")
     (WURZEL / "CHANGELOG.md").write_text(markdown(), encoding="utf-8")
     (DOCS / ".nojekyll").write_text("", encoding="utf-8")
     print("gebaut:", ", ".join(SPRACHEN))

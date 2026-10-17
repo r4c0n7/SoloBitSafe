@@ -4,6 +4,14 @@ What changed, day by day, since the project started on 8 October 2026.
 
 Website: https://r4c0n7.github.io/SoloBitSafe/changelog.html
 
+## 2026-10-17 – V1.0.11b
+
+- Version V1.0.11b
+- Chip-bound security key (eFuse pepper) for every board: on the first start the device asks to burn it with BTN1, and the web flasher guides you through it. It protects the seed if the flash is ever read out and is required for mainnet wallets
+- The key can also be burned later from the app or over USB, Bluetooth and Wi-Fi; boards that can no longer take a key are reported clearly
+- Hardened install now runs in two stages: standard install, security key, then Secure Boot and flash encryption
+- Website: "Bit" in SoloBitSafe in Bitcoin orange, colour accents for sections, columns, technical details and the latest changes, clearer texts
+
 ## 2026-10-17 – V1.0.10b
 
 - Version V1.0.10b
