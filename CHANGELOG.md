@@ -4,6 +4,14 @@ What changed, day by day, since the project started on 8 October 2026.
 
 Website: https://r4c0n7.github.io/SoloBitSafe/changelog.html
 
+## 2026-10-17 – V1.0.9b
+
+- Version V1.0.9b
+- Secure Boot v2 and flash encryption enabled on the reference device: only signed firmware starts, the flash cannot be read out, wallet and settings kept
+- Recovery over USB proven: signed, encrypted images are written in watchdog-safe chunks
+- The status page reports which firmware slot is running
+- Fixed: a read past a buffer when looking for a custom Wi-Fi name
+
 ## 2026-10-16 – V1.0.8b
 
 - Version V1.0.8b
