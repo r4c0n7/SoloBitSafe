@@ -1,4 +1,4 @@
-VERSION = "V1.0.12b"
+VERSION = "V1.0.13b"
 SPENDE = "bc1q8draqujtwuy9gx799n0e5vylvx4aftrvd90trr"
 
 SPRACHEN = {"en": "English", "de": "Deutsch", "es": "Español", "fr": "Français"}
@@ -390,6 +390,12 @@ DATUM = {
 }
 
 LOG = [
+    ("2026-10-17", "V1.0.13b", {
+        "en": ["Version V1.0.13b", "The device's miner dashboard no longer loads fonts from Google – opening it sends nothing to third parties"],
+        "de": ["Version V1.0.13b", "Das Miner-Dashboard des Geräts lädt keine Schriften mehr von Google – beim Öffnen geht nichts an Dritte"],
+        "es": ["Versión V1.0.13b", "El panel de minería del dispositivo ya no carga fuentes de Google: al abrirlo no se envía nada a terceros"],
+        "fr": ["Version V1.0.13b", "Le tableau de bord de minage de l'appareil ne charge plus de polices depuis Google : rien n'est envoyé à des tiers à l'ouverture"],
+    }),
     ("2026-10-17", "V1.0.12b", {
         "en": ["Version V1.0.12b",
                "More internal RAM for Bluetooth: mining data and the dashboard status now live in PSRAM – about 4 KB more free memory at idle",

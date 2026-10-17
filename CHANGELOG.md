@@ -4,6 +4,11 @@ What changed, day by day, since the project started on 8 October 2026.
 
 Website: https://r4c0n7.github.io/SoloBitSafe/changelog.html
 
+## 2026-10-17 – V1.0.13b
+
+- Version V1.0.13b
+- The device's miner dashboard no longer loads fonts from Google – opening it sends nothing to third parties
+
 ## 2026-10-17 – V1.0.12b
 
 - Version V1.0.12b

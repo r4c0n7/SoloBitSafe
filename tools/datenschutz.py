@@ -17,7 +17,7 @@ DATENSCHUTZ = {
             ("The device", [
                 "The seed is stored encrypted on the board and never leaves it. Settings and contacts stay on the board.",
                 "The board connects to your Wi-Fi, to the mining pool you set (which sees your payout address), to mempool.space for block height, balance and fees, and to CoinGecko for the exchange rate.",
-                "Its web dashboard loads fonts from Google Fonts in your browser.",
+                "Its web pages load nothing from third parties; fonts fall back to the ones on your computer.",
             ]),
             ("Donations and contact", [
                 "Donations are Bitcoin transactions and therefore public on the blockchain. Questions and reports go through the GitHub repository of this website.",
@@ -43,7 +43,7 @@ DATENSCHUTZ = {
             ("Das Gerät", [
                 "Der Seed liegt verschlüsselt auf dem Board und verlässt es nie. Einstellungen und Kontakte bleiben auf dem Board.",
                 "Das Board verbindet sich mit deinem WLAN, mit dem eingestellten Mining-Pool (der deine Auszahlungsadresse sieht), mit mempool.space für Blockhöhe, Guthaben und Gebühren und mit CoinGecko für den Kurs.",
-                "Sein Web-Dashboard lädt Schriften von Google Fonts in deinem Browser.",
+                "Seine Webseiten laden nichts von Dritten; Schriften kommen von deinem Rechner.",
             ]),
             ("Spenden und Kontakt", [
                 "Spenden sind Bitcoin-Transaktionen und damit öffentlich in der Blockchain. Fragen und Hinweise laufen über das GitHub-Repository dieser Website.",
@@ -69,7 +69,7 @@ DATENSCHUTZ = {
             ("El dispositivo", [
                 "La semilla se guarda cifrada en la placa y nunca sale de ella. Los ajustes y contactos se quedan en la placa.",
                 "La placa se conecta a tu Wi-Fi, al pool de minería que configures (que ve tu dirección de cobro), a mempool.space para altura de bloque, saldo y comisiones, y a CoinGecko para el tipo de cambio.",
-                "Su panel web carga fuentes de Google Fonts en tu navegador.",
+                "Sus páginas web no cargan nada de terceros; las fuentes son las de tu ordenador.",
             ]),
             ("Donaciones y contacto", [
                 "Las donaciones son transacciones de Bitcoin y por tanto públicas en la blockchain. Las preguntas y avisos van por el repositorio de GitHub de esta web.",
@@ -95,7 +95,7 @@ DATENSCHUTZ = {
             ("L'appareil", [
                 "La graine est stockée chiffrée sur la carte et ne la quitte jamais. Les réglages et les contacts restent sur la carte.",
                 "La carte se connecte à ton Wi-Fi, au pool de minage choisi (qui voit ton adresse de paiement), à mempool.space pour la hauteur de bloc, le solde et les frais, et à CoinGecko pour le cours.",
-                "Son tableau de bord web charge des polices depuis Google Fonts dans ton navigateur.",
+                "Ses pages web ne chargent rien de tiers ; les polices sont celles de ton ordinateur.",
             ]),
             ("Dons et contact", [
                 "Les dons sont des transactions Bitcoin, donc publiques sur la blockchain. Questions et signalements passent par le dépôt GitHub de ce site.",
