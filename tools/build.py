@@ -7,6 +7,7 @@ sys.path.insert(0, str(pathlib.Path(__file__).parent))
 from texte import DATUM, LOG, SPENDE, SPRACHEN, T, VERSION
 from anleitung import ANLEITUNG
 from flasher_texte import FLASHER
+from datenschutz import DATENSCHUTZ
 import json
 
 WURZEL = pathlib.Path(__file__).resolve().parents[1]
@@ -64,9 +65,7 @@ def kopf(s, t, seite, titel, beschreibung):
 <meta property="og:url" content="{URL}{pfad(s, seite)}">
 <meta name="theme-color" content="#1c232d">
 <link rel="icon" href="{hoch}img/mark.svg" type="image/svg+xml">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600&family=Barlow+Condensed:wght@600;700&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="{hoch}fonts/fonts.css">
 <link rel="stylesheet" href="{hoch}style.css">
 {'<script type="importmap">{"imports":{"three":"https://cdn.jsdelivr.net/npm/three@0.170.0/build/three.module.js","three/addons/":"https://cdn.jsdelivr.net/npm/three@0.170.0/examples/jsm/"}}</script>' + chr(10) + f'<script type="module" src="{hoch}geraet3d.js"></script>' if seite == "" else ""}
 {'<script type="importmap">{"imports":{"esptool-js":"https://cdn.jsdelivr.net/npm/esptool-js@0.7.0/lib/index.js","pako":"https://cdn.jsdelivr.net/npm/pako@2.1.0/dist/pako.esm.mjs","atob-lite":"https://cdn.jsdelivr.net/npm/atob-lite@2.0.0/+esm"}}</script>' + chr(10) + f'<script type="module" src="{hoch}flasher.js"></script>' if seite == "flash.html" else ""}
@@ -101,6 +100,7 @@ def fuss(s, t):
     return f"""<footer class="fuss">
 <p>{e(t["fuss_quellen"])} <a href="{REPO}">{e(t["fuss_seite"])}</a></p>
 <p class="klein">{e(t["fuss_lizenz"])}</p>
+<p class="klein"><a href="privacy.html">{e(DATENSCHUTZ[s]["nav"])}</a></p>
 </footer>
 <script src="{hoch}seite.js" defer></script>
 </body>
@@ -300,6 +300,28 @@ def flash(s):
     )
 
 
+def datenschutz(s):
+    t = T[s]
+    d = DATENSCHUTZ[s]
+    teile = "".join(
+        f'<section class="block-klein"><h2>{e(h)}</h2>{"".join(f"<p>{e(p)}</p>" for p in absaetze)}</section>'
+        for h, absaetze in d["abschnitte"]
+    )
+    return (
+        kopf(s, t, "privacy.html", f'{d["titel"]} – SoloBitSafe', d["intro"])
+        + leiste(s, t, "privacy.html")
+        + f"""<main id="inhalt" class="schmal datenschutz">
+<p><a href="./">{e(t["log_zurueck"])}</a></p>
+<h1>{e(d["titel"])}</h1>
+<p class="lead">{e(d["intro"])}</p>
+{teile}
+<p class="stand">{e(d["stand"])}</p>
+</main>
+"""
+        + fuss(s, t)
+    )
+
+
 def markdown():
     t = T["en"]
     zeilen = ["# Changelog", "", t["log_text"], "", f"Website: {URL}changelog.html", ""]
@@ -319,6 +341,7 @@ def main():
         (ordner / "changelog.html").write_text(marke(changelog(s)), encoding="utf-8")
         (ordner / "guide.html").write_text(marke(anleitung(s)), encoding="utf-8")
         (ordner / "flash.html").write_text(marke(flash(s)), encoding="utf-8")
+        (ordner / "privacy.html").write_text(marke(datenschutz(s)), encoding="utf-8")
     (WURZEL / "CHANGELOG.md").write_text(markdown(), encoding="utf-8")
     (DOCS / ".nojekyll").write_text("", encoding="utf-8")
     print("gebaut:", ", ".join(SPRACHEN))

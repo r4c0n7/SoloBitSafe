@@ -4,6 +4,13 @@ What changed, day by day, since the project started on 8 October 2026.
 
 Website: https://r4c0n7.github.io/SoloBitSafe/changelog.html
 
+## 2026-10-17 – V1.0.12b
+
+- Version V1.0.12b
+- More internal RAM for Bluetooth: mining data and the dashboard status now live in PSRAM – about 4 KB more free memory at idle
+- New privacy page in four languages: no accounts, no analytics, no tracking, and every place where data leaves your hands
+- The website now serves its fonts itself instead of loading them from Google Fonts
+
 ## 2026-10-17 – V1.0.11b
 
 - Version V1.0.11b

@@ -319,3 +319,8 @@ main { display: block; }
 
 @media (max-width: 60rem) { .spalte { padding: 1rem 1.1rem; } }
 body { overflow-x: clip; }
+.datenschutz .block-klein { margin-top: 2rem; }
+.datenschutz .block-klein h2 { font-size: 1.6rem; margin-bottom: .5rem; }
+.datenschutz .block-klein h2::before { display: none; }
+.datenschutz .block-klein p { color: var(--gedimmt); margin: .5rem 0; }
+.datenschutz .lead { margin: 1rem 0 0; }

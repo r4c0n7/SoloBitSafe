@@ -1,4 +1,4 @@
-VERSION = "V1.0.11b"
+VERSION = "V1.0.12b"
 SPENDE = "bc1q8draqujtwuy9gx799n0e5vylvx4aftrvd90trr"
 
 SPRACHEN = {"en": "English", "de": "Deutsch", "es": "Español", "fr": "Français"}
@@ -390,6 +390,24 @@ DATUM = {
 }
 
 LOG = [
+    ("2026-10-17", "V1.0.12b", {
+        "en": ["Version V1.0.12b",
+               "More internal RAM for Bluetooth: mining data and the dashboard status now live in PSRAM – about 4 KB more free memory at idle",
+               "New privacy page in four languages: no accounts, no analytics, no tracking, and every place where data leaves your hands",
+               "The website now serves its fonts itself instead of loading them from Google Fonts"],
+        "de": ["Version V1.0.12b",
+               "Mehr interner RAM für Bluetooth: Mining-Daten und Dashboard-Status liegen jetzt im PSRAM – im Leerlauf rund 4 KB mehr frei",
+               "Neue Datenschutzseite in vier Sprachen: keine Konten, keine Analyse, kein Tracking, und jede Stelle, an der Daten deine Hand verlassen",
+               "Die Website liefert ihre Schriften jetzt selbst aus, statt sie von Google Fonts zu laden"],
+        "es": ["Versión V1.0.12b",
+               "Más RAM interna para Bluetooth: los datos de minería y el estado del panel están ahora en PSRAM – unos 4 KB más libres en reposo",
+               "Nueva página de privacidad en cuatro idiomas: sin cuentas, sin analítica, sin seguimiento, y cada punto en el que los datos salen de tus manos",
+               "La web sirve ahora sus propias fuentes en lugar de cargarlas desde Google Fonts"],
+        "fr": ["Version V1.0.12b",
+               "Plus de RAM interne pour le Bluetooth : les données de minage et l'état du tableau de bord sont maintenant en PSRAM – environ 4 Ko libres de plus au repos",
+               "Nouvelle page de confidentialité en quatre langues : pas de compte, pas d'analyse, pas de pistage, et chaque endroit où des données quittent tes mains",
+               "Le site sert maintenant ses propres polices au lieu de les charger depuis Google Fonts"],
+    }),
     ("2026-10-17", "V1.0.11b", {
         "en": ["Version V1.0.11b",
                "Chip-bound security key (eFuse pepper) for every board: on the first start the device asks to burn it with BTN1, and the web flasher guides you through it. It protects the seed if the flash is ever read out and is required for mainnet wallets",
