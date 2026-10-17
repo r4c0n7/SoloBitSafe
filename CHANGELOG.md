@@ -11,7 +11,7 @@ Website: https://r4c0n7.github.io/SoloBitSafe/changelog.html
 - Recovery over USB proven: signed, encrypted images are written in watchdog-safe chunks
 - The status page reports which firmware slot is running
 - Fixed: a read past a buffer when looking for a custom Wi-Fi name
-- Key model planned for other devices: standard firmware without Secure Boot, hardened mode with the publisher signature as an opt-in, own key for experts; users only manage their seed words
+- Key model planned for other devices: updates are signed only by the publisher, standard firmware without Secure Boot or hardened mode as an opt-in; users only manage their seed words
 
 ## 2026-10-16 – V1.0.8b
 
