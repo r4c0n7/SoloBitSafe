@@ -9,7 +9,8 @@ Website: https://r4c0n7.github.io/SoloBitSafe/changelog.html
 - Web flasher: plug in the T-Display-S3 and install SoloBitSafe in Chrome or Edge – Update keeps wallet, settings and Wi-Fi, Full install sets up a new board
 - Updates also work on devices with Secure Boot and flash encryption: the browser detects them and writes encrypted in sections
 - Every image is checked with SHA-256 before writing; the setup guide now points to the flasher
-- Tested on the reference device with Secure Boot: encrypted update in 102 s, wallet kept, device starts the new image
+- The flasher's write path was tested on the reference device with Secure Boot: encrypted update in 102 s, wallet kept, device starts the new image
+- On Linux, Chrome can lose the connection when the chip enters download mode; the page says so – use Windows or macOS for now
 
 ## 2026-10-17 – V1.0.9b
 

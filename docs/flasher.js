@@ -41,18 +41,23 @@ const terminal = {
 async function portSuchen() {
   for (let i = 0; i < 30; i++) {
     const ports = (await navigator.serial.getPorts()).filter((p) => p.getInfo().usbVendorId === VID);
-    if (ports.length) return ports[0];
+    if (ports.length) return ports[ports.length - 1];
     await new Promise((r) => setTimeout(r, 500));
   }
   throw new FlashFehler("verbinden_fehler");
 }
 
+const schlafen = (ms) => new Promise((r) => setTimeout(r, ms));
+const hoechstens = (versprechen, ms) => Promise.race([versprechen, schlafen(ms)]);
+
 async function verbinden() {
   let letzter;
   for (let v = 0; v < 3; v++) {
+    let transport;
     try {
-      if (!port || v > 0) port = await portSuchen();
-      const loader = new ESPLoader({ transport: new Transport(port), baudrate: 115200, terminal });
+      port = await portSuchen();
+      transport = new Transport(port);
+      const loader = new ESPLoader({ transport, baudrate: 115200, terminal });
       await loader.main("default_reset");
       if (loader.chip.CHIP_NAME !== "ESP32-S3") {
         await loader.transport.disconnect();
@@ -63,7 +68,7 @@ async function verbinden() {
       if (e instanceof FlashFehler) throw e;
       letzter = e;
       log(String(e.message || e));
-      try { await port.close(); } catch {}
+      try { await hoechstens(transport ? transport.disconnect() : port.close(), 3000); } catch {}
       await new Promise((r) => setTimeout(r, 1500));
     }
   }
@@ -71,7 +76,7 @@ async function verbinden() {
 }
 
 async function trennen(loader) {
-  if (loader) await loader.transport.disconnect();
+  if (loader) await hoechstens(loader.transport.disconnect(), 3000);
 }
 
 async function starten() {
