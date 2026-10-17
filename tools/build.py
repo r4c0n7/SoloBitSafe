@@ -5,6 +5,8 @@ import sys
 sys.path.insert(0, str(pathlib.Path(__file__).parent))
 from texte import DATUM, LOG, SPENDE, SPRACHEN, T, VERSION
 from anleitung import ANLEITUNG
+from flasher_texte import FLASHER
+import json
 
 WURZEL = pathlib.Path(__file__).resolve().parents[1]
 DOCS = WURZEL / "docs"
@@ -49,6 +51,7 @@ def kopf(s, t, seite, titel, beschreibung):
 <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600&family=Barlow+Condensed:wght@600;700&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="{hoch}style.css">
 {'<script type="importmap">{"imports":{"three":"https://cdn.jsdelivr.net/npm/three@0.170.0/build/three.module.js","three/addons/":"https://cdn.jsdelivr.net/npm/three@0.170.0/examples/jsm/"}}</script>' + chr(10) + f'<script type="module" src="{hoch}geraet3d.js"></script>' if seite == "" else ""}
+{'<script type="importmap">{"imports":{"esptool-js":"https://cdn.jsdelivr.net/npm/esptool-js@0.7.0/lib/index.js","pako":"https://cdn.jsdelivr.net/npm/pako@2.1.0/dist/pako.esm.mjs","atob-lite":"https://cdn.jsdelivr.net/npm/atob-lite@2.0.0/+esm"}}</script>' + chr(10) + f'<script type="module" src="{hoch}flasher.js"></script>' if seite == "flash.html" else ""}
 </head>
 <body>
 <a class="sprung" href="#inhalt">{e(t["nav"][0])}</a>
@@ -59,7 +62,7 @@ def leiste(s, t, seite):
     start = relativ(s, s)
     nav = "".join(
         f'<a href="{start if seite else ""}#{a}">{e(n)}</a>' for a, n in zip(ANKER, t["nav"])
-    ) + f'<a href="guide.html"{' aria-current="page"' if seite == "guide.html" else ""}>{e(ANLEITUNG[s]["titel"])}</a>'
+    ) + f'<a href="guide.html"{' aria-current="page"' if seite == "guide.html" else ""}>{e(ANLEITUNG[s]["titel"])}</a>' + f'<a href="flash.html"{' aria-current="page"' if seite == "flash.html" else ""}>{e(FLASHER[s]["nav"])}</a>'
     sprachen = "".join(
         f'<a href="{relativ(s, x, seite)}" hreflang="{x}" lang="{x}"'
         + (' aria-current="true"' if x == s else "")
@@ -180,7 +183,7 @@ def startseite(s):
 <div class="held-text">
 <h1>{e(t["h1"])}</h1>
 <p class="lead">{e(t["lead"])}</p>
-<p class="aktionen"><a class="knopf primaer" href="guide.html">{e(ANLEITUNG[s]["titel"])}</a><a class="knopf" href="#ansichten">{e(t["knopf_screens"])}</a><a class="knopf" href="changelog.html">{e(t["knopf_log"])}</a></p>
+<p class="aktionen"><a class="knopf primaer" href="guide.html">{e(ANLEITUNG[s]["titel"])}</a><a class="knopf" href="flash.html">{e(FLASHER[s]["titel"])}</a><a class="knopf" href="#ansichten">{e(t["knopf_screens"])}</a><a class="knopf" href="changelog.html">{e(t["knopf_log"])}</a></p>
 <p class="stand">{e(t["stand"].format(v=VERSION))}</p>
 </div>
 {geraet(s, t)}
@@ -238,6 +241,41 @@ def anleitung(s):
     )
 
 
+def flash(s):
+    t = T[s]
+    f = FLASHER[s]
+    schritte = "".join(f"<li>{e(x)}</li>" for x in f["schritte"])
+    arten = "".join(
+        f'<label class="wahl"><input type="radio" name="art" value="{k}"{" checked" if k == "update" else ""}>'
+        f'<span><strong>{e(f[k][0])}</strong><span>{e(f[k][1])}</span></span></label>'
+        for k in ["update", "komplett"]
+    )
+    daten = json.dumps({"m": f["m"], "version": f["version"]}, ensure_ascii=False).replace("</", "<\\/")
+    return (
+        kopf(s, t, "flash.html", f'{f["titel"]} – SoloBitSafe', f["intro"])
+        + leiste(s, t, "flash.html")
+        + f"""<main id="inhalt" class="schmal">
+<p><a href="./">{e(t["log_zurueck"])}</a></p>
+<h1>{e(f["titel"])}</h1>
+<p class="text">{e(f["intro"])}</p>
+<ol class="flash-schritte">{schritte}</ol>
+<section class="flasher" data-firmware="{"" if s == "en" else "../"}firmware/">
+<p class="flash-version" id="flash-version"></p>
+<fieldset><legend>{e(f["art_h"])}</legend>{arten}</fieldset>
+<label class="bestaetigen" hidden><input type="checkbox" id="flash-ok"> {e(f["bestaetigen"])}</label>
+<p class="aktionen"><button type="button" class="knopf primaer" id="flash-start" disabled>{e(f["start"])}</button></p>
+<div class="flash-balken" hidden><div id="flash-balken"></div></div>
+<p class="flash-status" id="flash-status" role="status" aria-live="polite"></p>
+<details><summary>{e(f["log_h"])}</summary><pre id="flash-log"></pre></details>
+<p class="text klein">{e(f["hinweis"])}</p>
+</section>
+<script type="application/json" id="flash-texte">{daten}</script>
+</main>
+"""
+        + fuss(s, t)
+    )
+
+
 def markdown():
     t = T["en"]
     zeilen = ["# Changelog", "", t["log_text"], "", f"Website: {URL}changelog.html", ""]
@@ -256,6 +294,7 @@ def main():
         (ordner / "index.html").write_text(startseite(s), encoding="utf-8")
         (ordner / "changelog.html").write_text(changelog(s), encoding="utf-8")
         (ordner / "guide.html").write_text(anleitung(s), encoding="utf-8")
+        (ordner / "flash.html").write_text(flash(s), encoding="utf-8")
     (WURZEL / "CHANGELOG.md").write_text(markdown(), encoding="utf-8")
     (DOCS / ".nojekyll").write_text("", encoding="utf-8")
     print("gebaut:", ", ".join(SPRACHEN))

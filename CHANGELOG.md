@@ -4,6 +4,12 @@ What changed, day by day, since the project started on 8 October 2026.
 
 Website: https://r4c0n7.github.io/SoloBitSafe/changelog.html
 
+## 2026-10-17
+
+- Web flasher: plug in the T-Display-S3 and install SoloBitSafe in Chrome or Edge – Update keeps wallet, settings and Wi-Fi, Full install sets up a new board
+- Updates also work on devices with Secure Boot and flash encryption: the browser detects them and writes encrypted in sections
+- Every image is checked with SHA-256 before writing; the setup guide now points to the flasher
+
 ## 2026-10-17 – V1.0.9b
 
 - Version V1.0.9b

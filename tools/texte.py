@@ -390,6 +390,20 @@ DATUM = {
 }
 
 LOG = [
+    ("2026-10-17", None, {
+        "en": ["Web flasher: plug in the T-Display-S3 and install SoloBitSafe in Chrome or Edge – Update keeps wallet, settings and Wi-Fi, Full install sets up a new board",
+               "Updates also work on devices with Secure Boot and flash encryption: the browser detects them and writes encrypted in sections",
+               "Every image is checked with SHA-256 before writing; the setup guide now points to the flasher"],
+        "de": ["Web-Flasher: T-Display-S3 anstecken und SoloBitSafe in Chrome oder Edge aufspielen – Update behält Wallet, Einstellungen und WLAN, Komplett richtet ein neues Board ein",
+               "Updates gehen auch bei Geräten mit Secure Boot und Flash-Verschlüsselung: der Browser erkennt sie und schreibt verschlüsselt in Abschnitten",
+               "Jedes Image wird vor dem Schreiben per SHA-256 geprüft; die Einrichtung verweist jetzt auf den Flasher"],
+        "es": ["Flasheador web: conecta el T-Display-S3 e instala SoloBitSafe en Chrome o Edge – Actualizar conserva monedero, ajustes y Wi-Fi, Instalación completa prepara una placa nueva",
+               "Las actualizaciones también funcionan en dispositivos con Secure Boot y cifrado de la flash: el navegador los detecta y escribe cifrado por secciones",
+               "Cada imagen se comprueba con SHA-256 antes de escribirla; la guía de instalación remite ahora al flasheador"],
+        "fr": ["Flasheur web : branche le T-Display-S3 et installe SoloBitSafe dans Chrome ou Edge – Mise à jour garde portefeuille, réglages et Wi-Fi, Installation complète prépare une carte neuve",
+               "Les mises à jour fonctionnent aussi sur les appareils avec Secure Boot et chiffrement de la flash : le navigateur les détecte et écrit chiffré par sections",
+               "Chaque image est vérifiée en SHA-256 avant l'écriture ; le guide d'installation renvoie maintenant au flasheur"],
+    }),
     ("2026-10-17", "V1.0.9b", {
         "en": ["Version V1.0.9b",
                "Secure Boot v2 and flash encryption enabled on the reference device: only signed firmware starts, the flash cannot be read out, wallet and settings kept",

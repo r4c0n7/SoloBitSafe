@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Flash in the browser – SoloBitSafe</title>
+<meta name="description" content="Plug in your LilyGo T-Display-S3 and install SoloBitSafe straight from this page – as an update that keeps your wallet, or as a full install on a new board.">
+<link rel="canonical" href="https://r4c0n7.github.io/SoloBitSafe/flash.html">
+<link rel="alternate" hreflang="en" href="https://r4c0n7.github.io/SoloBitSafe/flash.html">
+<link rel="alternate" hreflang="de" href="https://r4c0n7.github.io/SoloBitSafe/de/flash.html">
+<link rel="alternate" hreflang="es" href="https://r4c0n7.github.io/SoloBitSafe/es/flash.html">
+<link rel="alternate" hreflang="fr" href="https://r4c0n7.github.io/SoloBitSafe/fr/flash.html">
+<link rel="alternate" hreflang="x-default" href="https://r4c0n7.github.io/SoloBitSafe/flash.html">
+<meta property="og:title" content="Flash in the browser – SoloBitSafe">
+<meta property="og:description" content="Plug in your LilyGo T-Display-S3 and install SoloBitSafe straight from this page – as an update that keeps your wallet, or as a full install on a new board.">
+<meta property="og:image" content="https://r4c0n7.github.io/SoloBitSafe/img/display/en/3b-wallet-entsperrt.webp">
+<meta property="og:url" content="https://r4c0n7.github.io/SoloBitSafe/flash.html">
+<meta name="theme-color" content="#1c232d">
+<link rel="icon" href="img/mark.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600&family=Barlow+Condensed:wght@600;700&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+
+<script type="importmap">{"imports":{"esptool-js":"https://cdn.jsdelivr.net/npm/esptool-js@0.7.0/lib/index.js","pako":"https://cdn.jsdelivr.net/npm/pako@2.1.0/dist/pako.esm.mjs","atob-lite":"https://cdn.jsdelivr.net/npm/atob-lite@2.0.0/+esm"}}</script>
+<script type="module" src="flasher.js"></script>
+</head>
+<body>
+<a class="sprung" href="#inhalt">How it works</a>
+<header class="leiste">
+<a class="marke" href="./"><img src="img/mark.svg" alt="" width="32" height="32"><span>SoloBitSafe</span></a>
+<nav class="nav" aria-label="SoloBitSafe"><a href="./#ablauf">How it works</a><a href="./#ansichten">Screens</a><a href="./#technik">Technical</a><a href="./#aenderungen">Changelog</a><a href="./#unterstuetzen">Support</a><a href="guide.html">Setup guide</a><a href="flash.html" aria-current="page">Flash</a></nav>
+<nav class="sprachen" aria-label="Language"><a href="flash.html" hreflang="en" lang="en" aria-current="true">EN</a><a href="de/flash.html" hreflang="de" lang="de">DE</a><a href="es/flash.html" hreflang="es" lang="es">ES</a><a href="fr/flash.html" hreflang="fr" lang="fr">FR</a></nav>
+</header>
+<main id="inhalt" class="schmal">
+<p><a href="./">Back to the homepage</a></p>
+<h1>Flash in the browser</h1>
+<p class="text">Plug in your LilyGo T-Display-S3 and install SoloBitSafe straight from this page – as an update that keeps your wallet, or as a full install on a new board.</p>
+<ol class="flash-schritte"><li>Use Chrome or Edge on a computer (Windows, Linux, macOS) and a USB-C data cable.</li><li>Close the SoloBitSafe app, Sparrow or anything else that uses the device over USB.</li><li>Press the button, choose “USB JTAG/serial debug unit” in the browser dialog and keep the tab open until it says done.</li><li>If the connection fails: unplug the device, hold BOOT (BTN1) while plugging it back in, release, start again.</li></ol>
+<section class="flasher" data-firmware="firmware/">
+<p class="flash-version" id="flash-version"></p>
+<fieldset><legend>What do you want to do?</legend><label class="wahl"><input type="radio" name="art" value="update" checked><span><strong>Update</strong><span>Installs the new firmware. Wallet, settings and Wi-Fi stay. Works on devices with Secure Boot too.</span></span></label><label class="wahl"><input type="radio" name="art" value="komplett"><span><strong>Full install</strong><span>For a new board: erases the whole flash and installs everything. An existing wallet is deleted and can only come back from your recovery words. Not possible on devices with Secure Boot.</span></span></label></fieldset>
+<label class="bestaetigen" hidden><input type="checkbox" id="flash-ok"> I have my recovery words, or there is no wallet on this board yet.</label>
+<p class="aktionen"><button type="button" class="knopf primaer" id="flash-start" disabled>Connect and flash</button></p>
+<div class="flash-balken" hidden><div id="flash-balken"></div></div>
+<p class="flash-status" id="flash-status" role="status" aria-live="polite"></p>
+<details><summary>Details</summary><pre id="flash-log"></pre></details>
+<p class="text klein">Firmware is signed by SoloBitSafe and checked with SHA-256 before writing. Devices with Secure Boot only ever start signed firmware.</p>
+</section>
+<script type="application/json" id="flash-texte">{"m": {"kein_serial": "This browser cannot reach USB devices. Use Chrome or Edge on a computer.", "waehlen": "Choose the device in the browser dialog.", "laden": "Loading and checking the firmware …", "verbinden": "Connecting …", "sicher": "Secure Boot and flash encryption detected: the update is written encrypted in sections. The device restarts in between – that is normal.", "offen": "Writing …", "fertig": "Done. The device restarts with {v}.", "abgebrochen": "No device selected.", "pruefsumme": "The download is damaged (checksum does not match). Reload the page.", "laden_fehler": "The firmware could not be loaded. Check your connection and reload.", "chip": "This device is not an ESP32-S3.", "komplett-gesperrt": "A full install is not possible on a device with Secure Boot. Use Update.", "schreiben": "Writing stopped. Unplug the device, hold BOOT (BTN1) while plugging it back in and start again. Until then the device keeps running its previous firmware.", "verbinden_fehler": "No connection. Unplug the device, hold BOOT (BTN1) while plugging it back in and try again.", "allgemein": "Error: {m}"}, "version": "Firmware {v}"}</script>
+</main>
+<footer class="fuss">
+<p>The firmware and app repositories are private for now. <a href="https://github.com/r4c0n7/SoloBitSafe">Source of this website</a></p>
+<p class="klein">Built on NerdMiner V2 by BitMaker (MIT), trezor-crypto (MIT), Argon2 (CC0/Apache 2.0), TFT_eSPI, NimBLE-Arduino. Fonts: Barlow and JetBrains Mono (SIL OFL).</p>
+</footer>
+<script src="seite.js" defer></script>
+</body>
+</html>
