@@ -3,7 +3,7 @@ import { spawn } from "node:child_process";
 import { createInterface } from "node:readline";
 import { SerialPort } from "serialport";
 import { ESPLoader, Transport } from "esptool-js";
-import { flashen, laden } from "../../docs/flasher-kern.js";
+import { flashen, laden, loeschen } from "../../docs/flasher-kern.js";
 
 class NodePort {
   constructor(pfad) {
@@ -84,6 +84,15 @@ const holen = async (url) => {
   const daten = readFileSync(new URL(url).pathname.replace(/^\/basis\//, `${ordner}/`));
   return { ok: true, arrayBuffer: async () => daten.buffer.slice(daten.byteOffset, daten.byteOffset + daten.length) };
 };
+if (art.startsWith("loeschen")) {
+  const nur = process.argv[4];
+  const bereiche = manifest.bereiche.filter((b) => !nur || b.name === nur);
+  console.log(`${art}: ${bereiche.map((b) => `${b.name}@0x${b.adresse.toString(16)}+0x${b.groesse.toString(16)}`).join(" ")}`);
+  const beginn = Date.now();
+  const s = await loeschen({ verbinden, trennen, bereiche, log: (t) => console.log("  " + t) });
+  console.log(`fertig in ${Math.round((Date.now() - beginn) / 1000)} s`, JSON.stringify(s));
+  process.exit(0);
+}
 const dateien = await laden("file:///basis/", manifest, art, holen);
 console.log(`${manifest.version} ${art}: ${dateien.map((d) => `${d.name}@0x${d.adresse.toString(16)}`).join(" ")}`);
 let letzte = -1;

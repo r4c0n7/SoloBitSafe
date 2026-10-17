@@ -1,37 +1,49 @@
 {
- "version": "V1.0.9b",
+ "version": "V1.0.10b",
  "chip": "ESP32-S3",
  "flash": "16MB",
  "dateien": {
   "app": {
-   "pfad": "V1.0.9b/app.bin",
+   "pfad": "V1.0.10b/app.bin",
    "adresse": 65536,
    "groesse": 2166784,
-   "sha256": "243d8e1017c8b9d68ae5f42180270a38679a2149282a8cb3c8ccc5f73d64a971"
+   "sha256": "4ad927ada9ce2d35174564381137ab2adfea31c85485d0a31a6193c93392b4e1"
   },
   "otadata": {
-   "pfad": "V1.0.9b/otadata-leer.bin",
+   "pfad": "V1.0.10b/otadata-leer.bin",
    "adresse": 57344,
    "groesse": 8192,
    "sha256": "7d2c7ac4888bfd75cd5f56e8d61f69595121183afc81556c876732fd3782c62f"
   },
   "bootloader": {
-   "pfad": "V1.0.9b/bootloader.bin",
+   "pfad": "V1.0.10b/bootloader.bin",
    "adresse": 0,
    "groesse": 15104,
    "sha256": "1051ac3e564bb9368a635af94a219d01c6263dc7a89a5e132bd01fef925026a2"
   },
   "partitions": {
-   "pfad": "V1.0.9b/partitions.bin",
+   "pfad": "V1.0.10b/partitions.bin",
    "adresse": 32768,
    "groesse": 3072,
    "sha256": "540dc12e93ce2590d4ca2ffed56ec6fa1a775f41efafd3e31cdcd9e853e73fea"
   },
   "boot_app0": {
-   "pfad": "V1.0.9b/boot_app0.bin",
+   "pfad": "V1.0.10b/boot_app0.bin",
    "adresse": 57344,
    "groesse": 8192,
    "sha256": "f94c5d786a7a8fab06ac5d10e33bf37711a6697636dc037559ea19cc410a17f0"
+  },
+  "bootloader_sb": {
+   "pfad": "V1.0.10b/bootloader-sb.bin",
+   "adresse": 0,
+   "groesse": 28672,
+   "sha256": "b5b25d159ab26033b8848389146bd55a830afc71d0f468f52003cb2581ceda38"
+  },
+  "app1": {
+   "pfad": "V1.0.10b/app.bin",
+   "adresse": 4259840,
+   "groesse": 2166784,
+   "sha256": "4ad927ada9ce2d35174564381137ab2adfea31c85485d0a31a6193c93392b4e1"
   }
  },
  "ablaeufe": {
@@ -44,6 +56,37 @@
    "partitions",
    "boot_app0",
    "app"
-  ]
- }
+  ],
+  "gehaertet": [
+   "bootloader_sb",
+   "partitions",
+   "otadata",
+   "app",
+   "app1"
+  ],
+  "loeschen": []
+ },
+ "bereiche": [
+  {
+   "name": "nvs",
+   "adresse": 36864,
+   "groesse": 20480
+  },
+  {
+   "name": "vault",
+   "adresse": 8454144,
+   "groesse": 65536
+  },
+  {
+   "name": "spiffs",
+   "adresse": 8519680,
+   "groesse": 3604480
+  },
+  {
+   "name": "coredump",
+   "adresse": 12124160,
+   "groesse": 65536
+  }
+ ],
+ "gehaertet_freigegeben": false
 }

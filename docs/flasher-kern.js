@@ -1,6 +1,8 @@
 export const ABSCHNITT = 0x50000;
 const ROM_BLOCK = 0x400;
 const SPI_SET_PARAMS = 0x0b;
+const ERASE_REGION = 0xd1;
+export const LOESCH_STUECK = 0x100000;
 const FLASH_GROESSE = 16 * 1024 * 1024;
 const RTC = 0x60008000;
 const WDT_SCHLUESSEL = 0x50d83aa1;
@@ -73,6 +75,16 @@ async function watchdogAus(loader) {
   await loader.writeReg(RTC + 0xb8, 0);
 }
 
+export async function neustart(loader) {
+  const t = loader.transport;
+  const pause = (ms) => new Promise((r) => setTimeout(r, ms));
+  await t.setDTR(false);
+  await t.setRTS(true);
+  await pause(200);
+  await t.setRTS(false);
+  await pause(200);
+}
+
 async function stueckSchreiben(loader, daten, adresse, verschluesselt, weiter) {
   const groesse = loader.FLASH_WRITE_SIZE;
   const bloecke = Math.ceil(daten.length / groesse);
@@ -110,14 +122,14 @@ export async function flashen({ verbinden, trennen, dateien, art, log = () => {}
     await loader.writeFlash({
       fileArray: dateien.map((d) => ({ data: d.daten, address: d.adresse })),
       flashMode: "keep", flashFreq: "keep", flashSize: "keep",
-      eraseAll: art === "komplett", compress: true,
+      eraseAll: art === "komplett" || art === "gehaertet", compress: true,
       reportProgress: (i, geschrieben, summe) => {
         const vorher = dateien.slice(0, i).reduce((x, d) => x + d.daten.length, 0);
         fortschritt(vorher + Math.round((dateien[i].daten.length * geschrieben) / Math.max(1, summe)), gesamt);
       },
     });
     fortschritt(gesamt, gesamt);
-    await loader.after("hard_reset");
+    await neustart(loader).catch(() => {});
     await trennen(loader);
     return s;
   }
@@ -159,7 +171,69 @@ export async function flashen({ verbinden, trennen, dateien, art, log = () => {}
       await pause(4000);
     }
   }
-  await loader.after("hard_reset").catch(() => {});
+  await neustart(loader).catch(() => {});
+  await trennen(loader).catch(() => {});
+  return s;
+}
+
+async function bereichLoeschen(loader, adresse, groesse) {
+  const zeit = loader.timeoutPerMb(loader.ERASE_REGION_TIMEOUT_PER_MB, groesse);
+  if (loader.IS_STUB) {
+    await loader.checkCommand("erase region", ERASE_REGION, worte(adresse, groesse), 0, 0, zeit);
+    return;
+  }
+  const bloecke = Math.ceil(groesse / loader.FLASH_WRITE_SIZE);
+  await loader.checkCommand("erase via flash begin", loader.ESP_FLASH_BEGIN,
+    worte(groesse, bloecke, loader.FLASH_WRITE_SIZE, adresse, 0), 0, 0, zeit);
+}
+
+export function loeschStuecke(bereiche) {
+  const liste = [];
+  for (const b of bereiche) {
+    for (let o = 0; o < b.groesse; o += LOESCH_STUECK) {
+      liste.push({ name: b.name, adresse: b.adresse + o, groesse: Math.min(LOESCH_STUECK, b.groesse - o) });
+    }
+  }
+  return liste;
+}
+
+export async function loeschen({ verbinden, trennen, bereiche, log = () => {}, fortschritt = () => {}, warten, versuche = 3 }) {
+  const pause = warten || ((ms) => new Promise((r) => setTimeout(r, ms)));
+  const liste = loeschStuecke(bereiche);
+  const gesamt = liste.reduce((x, b) => x + b.groesse, 0);
+  let fertig = 0;
+  let loader = await verbinden();
+  const s = await sicherheit(loader);
+  log(`sicherheit sdm=${s.sdm} secureBoot=${s.secureBoot} verschluesselt=${s.verschluesselt}`);
+  for (let i = 0; i < liste.length; i++) {
+    const b = liste[i];
+    for (let v = 1; ; v++) {
+      try {
+        if (!loader) loader = await verbinden();
+        if (!loader.IS_STUB) await romVorbereiten(loader);
+        await bereichLoeschen(loader, b.adresse, b.groesse);
+        fertig += b.groesse;
+        fortschritt(fertig, gesamt);
+        log(`${b.name} 0x${b.adresse.toString(16)} ${b.groesse} geloescht`);
+        break;
+      } catch (e) {
+        log(`${b.name} 0x${b.adresse.toString(16)} Versuch ${v}: ${e.message || e}`);
+        if (v >= versuche) {
+          if (loader) await trennen(loader).catch(() => {});
+          throw new FlashFehler("loeschen", `0x${b.adresse.toString(16)}`);
+        }
+        await trennen(loader).catch(() => {});
+        loader = null;
+        await pause(4000);
+      }
+    }
+    if (!loader.IS_STUB && i < liste.length - 1) {
+      await trennen(loader).catch(() => {});
+      loader = null;
+      await pause(4000);
+    }
+  }
+  await neustart(loader).catch(() => {});
   await trennen(loader).catch(() => {});
   return s;
 }

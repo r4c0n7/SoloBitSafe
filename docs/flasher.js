@@ -1,5 +1,5 @@
 import { ESPLoader, Transport } from "esptool-js";
-import { flashen, laden, FlashFehler } from "./flasher-kern.js";
+import { flashen, laden, loeschen, FlashFehler } from "./flasher-kern.js";
 
 const VID = 0x303a;
 const bereich = document.querySelector(".flasher");
@@ -25,11 +25,22 @@ const log = (t) => {
   protokoll.scrollTop = protokoll.scrollHeight;
 };
 const art = () => document.querySelector('input[name="art"]:checked').value;
+const variante = () => document.querySelector('input[name="variante"]:checked').value;
+const variantenFeld = document.querySelector(".variante");
+const gehaertetWahl = document.querySelector('input[name="variante"][value="gehaertet"]');
+const bald = document.getElementById("flash-bald");
 
 function freigeben() {
-  const komplett = art() === "komplett";
-  bestaetigen.hidden = !komplett;
-  knopf.disabled = laeuft || !manifest || !("serial" in navigator) || (komplett && !ok.checked);
+  const a = art();
+  const gefaehrlich = a === "komplett" || a === "loeschen";
+  variantenFeld.hidden = a !== "komplett";
+  const gehaertetFrei = !!manifest?.gehaertet_freigegeben;
+  gehaertetWahl.disabled = !gehaertetFrei;
+  bald.hidden = gehaertetFrei;
+  bald.textContent = texte.bald;
+  if (!gehaertetFrei && gehaertetWahl.checked) document.querySelector('input[name="variante"][value="standard"]').checked = true;
+  bestaetigen.hidden = !gefaehrlich;
+  knopf.disabled = laeuft || !manifest || !("serial" in navigator) || (gefaehrlich && !ok.checked);
 }
 
 const terminal = {
@@ -92,10 +103,24 @@ async function starten() {
     } catch {
       throw new FlashFehler("abgebrochen");
     }
+    const a = art();
+    const ablauf = a === "komplett" ? (variante() === "gehaertet" ? "gehaertet" : "komplett") : a;
+    const fortschritt = (x, g) => { balken.style.width = `${Math.floor((x * 100) / g)}%`; };
+    if (ablauf === "loeschen") {
+      melden("verbinden");
+      balken.parentElement.hidden = false;
+      try {
+        await loeschen({ verbinden, trennen, bereiche: manifest.bereiche, log, fortschritt });
+      } catch (e) {
+        throw e instanceof FlashFehler && e.code === "loeschen" ? new FlashFehler("loeschen_fehler") : e;
+      }
+      melden("geloescht");
+      return;
+    }
     melden("laden");
     let dateien;
     try {
-      dateien = await laden(basis, manifest, art());
+      dateien = await laden(basis, manifest, ablauf);
     } catch (e) {
       throw e instanceof FlashFehler && e.code === "pruefsumme" ? e : new FlashFehler("laden_fehler");
     }
@@ -105,14 +130,14 @@ async function starten() {
       verbinden,
       trennen,
       dateien,
-      art: art(),
+      art: ablauf,
       log: (t) => {
         log(t);
         if (t.startsWith("sicherheit")) melden(t.includes("verschluesselt=true") || t.includes("sdm=true") ? "sicher" : "offen");
       },
-      fortschritt: (a, g) => { balken.style.width = `${Math.floor((a * 100) / g)}%`; },
+      fortschritt,
     });
-    melden("fertig", { v: manifest.version });
+    melden(ablauf === "gehaertet" ? "erststart" : "fertig", { v: manifest.version });
   } catch (e) {
     const code = e instanceof FlashFehler ? e.code : null;
     if (!code) log(String(e.stack || e));
@@ -123,7 +148,7 @@ async function starten() {
   }
 }
 
-document.querySelectorAll('input[name="art"]').forEach((r) => r.addEventListener("change", freigeben));
+document.querySelectorAll('input[name="art"], input[name="variante"]').forEach((r) => r.addEventListener("change", freigeben));
 ok.addEventListener("change", freigeben);
 knopf.addEventListener("click", starten);
 

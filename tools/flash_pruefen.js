@@ -42,6 +42,20 @@ const server = http.createServer((req, res) => {
       await p.check('input[value="komplett"]');
       const gesperrt = await p.evaluate(() => document.getElementById('flash-start').disabled && !document.querySelector('.bestaetigen').hidden);
       if (!gesperrt) fehler.push(`${art} ${s} Komplett ohne Bestaetigung frei`);
+      const v = await p.evaluate(() => ({
+        sichtbar: !document.querySelector('.variante').hidden,
+        gehaertetAus: document.querySelector('input[name="variante"][value="gehaertet"]').disabled,
+        standard: document.querySelector('input[name="variante"][value="standard"]').checked,
+        bald: !document.getElementById('flash-bald').hidden && document.getElementById('flash-bald').textContent.length > 10,
+      }));
+      if (!v.sichtbar || !v.gehaertetAus || !v.standard || !v.bald) fehler.push(`${art} ${s} Variante falsch ${JSON.stringify(v)}`);
+      await p.check('input[value="loeschen"]');
+      const l = await p.evaluate(() => ({
+        variante: document.querySelector('.variante').hidden,
+        best: !document.querySelector('.bestaetigen').hidden,
+      }));
+      if (!l.variante || !l.best) fehler.push(`${art} ${s} Loeschen ohne Bestaetigung ${JSON.stringify(l)}`);
+      await p.check('input[value="komplett"]');
       await p.check('#flash-ok');
       if (z.serial && await p.evaluate(() => document.getElementById('flash-start').disabled)) fehler.push(`${art} ${s} Komplett trotz Bestaetigung gesperrt`);
       if (s === '' && art === 'desktop') {
@@ -51,7 +65,7 @@ const server = http.createServer((req, res) => {
           const basis = new URL('firmware/', location.href);
           const m = await (await fetch(new URL('manifest.json', basis))).json();
           const out = {};
-          for (const a of ['update', 'komplett']) {
+          for (const a of ['update', 'komplett', 'gehaertet']) {
             const d = await k.laden(basis, m, a);
             out[a] = d.map((x) => `${x.name}@${x.adresse.toString(16)}:${x.daten.length}`).join(' ');
           }

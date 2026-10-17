@@ -15,11 +15,21 @@ DATEIEN = {
     "bootloader": ("bootloader.bin", 0x0),
     "partitions": ("partitions.bin", 0x8000),
     "boot_app0": ("boot_app0.bin", 0xE000),
+    "bootloader_sb": ("bootloader-sb.bin", 0x0),
+    "app1": ("app.bin", 0x410000),
 }
 ABLAEUFE = {
     "update": ["app", "otadata"],
     "komplett": ["bootloader", "partitions", "boot_app0", "app"],
+    "gehaertet": ["bootloader_sb", "partitions", "otadata", "app", "app1"],
+    "loeschen": [],
 }
+BEREICHE = [
+    {"name": "nvs", "adresse": 0x9000, "groesse": 0x5000},
+    {"name": "vault", "adresse": 0x810000, "groesse": 0x10000},
+    {"name": "spiffs", "adresse": 0x820000, "groesse": 0x370000},
+    {"name": "coredump", "adresse": 0xB90000, "groesse": 0x10000},
+]
 
 
 def main():
@@ -42,7 +52,15 @@ def main():
                 "groesse": len(daten),
                 "sha256": hashlib.sha256(daten).hexdigest(),
             }
-    manifest = {"version": version, "chip": "ESP32-S3", "flash": "16MB", "dateien": dateien, "ablaeufe": ABLAEUFE}
+    manifest = {
+        "version": version,
+        "chip": "ESP32-S3",
+        "flash": "16MB",
+        "dateien": dateien,
+        "ablaeufe": ABLAEUFE,
+        "bereiche": BEREICHE,
+        "gehaertet_freigegeben": False,
+    }
     (ZIEL / "manifest.json").write_text(json.dumps(manifest, indent=1) + "\n", encoding="utf-8")
     for name, d in dateien.items():
         print(f"   {name:<11} 0x{d['adresse']:06x} {d['groesse']:>8} {d['sha256'][:16]}")

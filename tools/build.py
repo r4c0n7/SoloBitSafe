@@ -248,9 +248,14 @@ def flash(s):
     arten = "".join(
         f'<label class="wahl"><input type="radio" name="art" value="{k}"{" checked" if k == "update" else ""}>'
         f'<span><strong>{e(f[k][0])}</strong><span>{e(f[k][1])}</span></span></label>'
-        for k in ["update", "komplett"]
+        for k in ["update", "komplett", "loeschen"]
     )
-    daten = json.dumps({"m": f["m"], "version": f["version"]}, ensure_ascii=False).replace("</", "<\\/")
+    varianten = "".join(
+        f'<label class="wahl"><input type="radio" name="variante" value="{k}"{" checked" if k == "standard" else ""}>'
+        f'<span><strong>{e(f[k][0])}</strong><span>{e(f[k][1])}</span></span></label>'
+        for k in ["gehaertet", "standard"]
+    )
+    daten = json.dumps({"m": f["m"], "version": f["version"], "bald": f["gehaertet_bald"]}, ensure_ascii=False).replace("</", "<\\/")
     return (
         kopf(s, t, "flash.html", f'{f["titel"]} – SoloBitSafe', f["intro"])
         + leiste(s, t, "flash.html")
@@ -262,6 +267,7 @@ def flash(s):
 <section class="flasher" data-firmware="{"" if s == "en" else "../"}firmware/">
 <p class="flash-version" id="flash-version"></p>
 <fieldset><legend>{e(f["art_h"])}</legend>{arten}</fieldset>
+<fieldset class="variante" hidden><legend>{e(f["variante_h"])}</legend>{varianten}<p class="text klein" id="flash-bald" hidden></p></fieldset>
 <label class="bestaetigen" hidden><input type="checkbox" id="flash-ok"> {e(f["bestaetigen"])}</label>
 <p class="aktionen"><button type="button" class="knopf primaer" id="flash-start" disabled>{e(f["start"])}</button></p>
 <div class="flash-balken" hidden><div id="flash-balken"></div></div>

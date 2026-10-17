@@ -1,4 +1,4 @@
-VERSION = "V1.0.9b"
+VERSION = "V1.0.10b"
 SPENDE = "bc1q8draqujtwuy9gx799n0e5vylvx4aftrvd90trr"
 
 SPRACHEN = {"en": "English", "de": "Deutsch", "es": "Español", "fr": "Français"}
@@ -87,7 +87,7 @@ T = {
         "log_zurueck": "Back to the homepage",
         "neueste": "Latest",
         "spende_h": "Support",
-        "spende_text": "SoloBitSafe is a hobby project. If it is useful to you, a donation helps keep it going.",
+        "spende_text": "SoloBitSafe is a hobby project. If it is useful to you, a donation helps keep it going. Want SoloBitSafe on more devices? Send BTC – donations decide which boards get supported next.",
         "spende_label": "Donation address (Bitcoin)",
         "kopieren": "Copy address",
         "kopiert": "Copied",
@@ -181,7 +181,7 @@ T = {
         "log_zurueck": "Zurück zur Startseite",
         "neueste": "Neueste",
         "spende_h": "Unterstützen",
-        "spende_text": "SoloBitSafe ist ein Hobbyprojekt. Wenn es dir nützt, hilft eine Spende, es weiterzuführen.",
+        "spende_text": "SoloBitSafe ist ein Hobbyprojekt. Wenn es dir nützt, hilft eine Spende, es weiterzuführen. Du willst SoloBitSafe auf weiteren Geräten? Schick BTC – Spenden entscheiden, welche Boards als Nächstes unterstützt werden.",
         "spende_label": "Spendenadresse (Bitcoin)",
         "kopieren": "Adresse kopieren",
         "kopiert": "Kopiert",
@@ -275,7 +275,7 @@ T = {
         "log_zurueck": "Volver al inicio",
         "neueste": "Más reciente",
         "spende_h": "Apoyar",
-        "spende_text": "SoloBitSafe es un proyecto personal. Si te resulta útil, una donación ayuda a mantenerlo.",
+        "spende_text": "SoloBitSafe es un proyecto personal. Si te resulta útil, una donación ayuda a mantenerlo. ¿Quieres SoloBitSafe en más dispositivos? Envía BTC: las donaciones deciden qué placas se admiten a continuación.",
         "spende_label": "Dirección de donación (Bitcoin)",
         "kopieren": "Copiar dirección",
         "kopiert": "Copiada",
@@ -369,7 +369,7 @@ T = {
         "log_zurueck": "Retour à l'accueil",
         "neueste": "Dernière",
         "spende_h": "Soutenir",
-        "spende_text": "SoloBitSafe est un projet personnel. S'il t'est utile, un don aide à le faire vivre.",
+        "spende_text": "SoloBitSafe est un projet personnel. S'il t'est utile, un don aide à le faire vivre. Tu veux SoloBitSafe sur d'autres appareils ? Envoie des BTC – les dons décident quelles cartes seront prises en charge ensuite.",
         "spende_label": "Adresse de don (Bitcoin)",
         "kopieren": "Copier l'adresse",
         "kopiert": "Copiée",
@@ -390,6 +390,32 @@ DATUM = {
 }
 
 LOG = [
+    ("2026-10-17", "V1.0.10b", {
+        "en": ["Version V1.0.10b",
+               "The currency chosen in the app (Android, Windows, Linux) now also applies on the device display and in the web dashboard, like the language",
+               "Mining dashboard in the apps: hashrate with the last hour, shares, best diff, pool, network, chance per day and device temperature – over USB, Bluetooth or Wi-Fi",
+               "Web flasher: the device now restarts by itself after flashing; new \"Erase\" option (factory reset of wallet, Wi-Fi and settings, also with Secure Boot)",
+               "Web flasher: full install offers standard or hardened (Secure Boot + flash encryption, recommended); hardened opens after a test on a fresh board",
+               "Support section: donations decide which boards get supported next"],
+        "de": ["Version V1.0.10b",
+               "Die in der App (Android, Windows, Linux) gewählte Währung gilt jetzt auch auf dem Gerätedisplay und im Web-Dashboard, wie die Sprache",
+               "Mining-Dashboard in den Apps: Hashrate mit der letzten Stunde, Shares, Best Diff, Pool, Netzwerk, Chance pro Tag und Gerätetemperatur – über USB, Bluetooth oder WLAN",
+               "Web-Flasher: Das Gerät startet nach dem Flashen jetzt von selbst neu; neue Option „Löschen“ (Werksreset von Wallet, WLAN und Einstellungen, auch mit Secure Boot)",
+               "Web-Flasher: Komplett-Installation mit Wahl Standard oder gehärtet (Secure Boot + Flash-Verschlüsselung, empfohlen); gehärtet wird nach einem Test auf einem frischen Board freigeschaltet",
+               "Unterstützen: Spenden entscheiden, welche Boards als Nächstes unterstützt werden"],
+        "es": ["Versión V1.0.10b",
+               "La moneda elegida en la app (Android, Windows, Linux) se aplica ahora también en la pantalla del dispositivo y en el panel web, como el idioma",
+               "Panel de minería en las apps: hashrate con la última hora, shares, mejor dificultad, pool, red, probabilidad por día y temperatura – por USB, Bluetooth o Wi-Fi",
+               "Flasheador web: el dispositivo se reinicia solo tras flashear; nueva opción «Borrar» (restablecimiento de monedero, Wi-Fi y ajustes, también con Secure Boot)",
+               "Flasheador web: la instalación completa ofrece estándar o reforzada (Secure Boot + cifrado, recomendada); la reforzada se habilita tras una prueba en una placa nueva",
+               "Apoyar: las donaciones deciden qué placas se admiten a continuación"],
+        "fr": ["Version V1.0.10b",
+               "La devise choisie dans l'appli (Android, Windows, Linux) s'applique maintenant aussi à l'écran de l'appareil et au tableau de bord web, comme la langue",
+               "Tableau de bord de minage dans les applis : hashrate de la dernière heure, shares, meilleure diff., pool, réseau, chance par jour et température – via USB, Bluetooth ou Wi-Fi",
+               "Flasheur web : l'appareil redémarre seul après le flash ; nouvelle option « Effacer » (réinitialisation du portefeuille, du Wi-Fi et des réglages, aussi avec Secure Boot)",
+               "Flasheur web : l'installation complète propose standard ou renforcée (Secure Boot + chiffrement, recommandée) ; la renforcée sera activée après un test sur une carte neuve",
+               "Soutenir : les dons décident quelles cartes seront prises en charge ensuite"],
+    }),
     ("2026-10-17", None, {
         "en": ["Web flasher: plug in the T-Display-S3 and install SoloBitSafe in Chrome or Edge – Update keeps wallet, settings and Wi-Fi, Full install sets up a new board",
                "Updates also work on devices with Secure Boot and flash encryption: the browser detects them and writes encrypted in sections",

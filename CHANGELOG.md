@@ -4,6 +4,15 @@ What changed, day by day, since the project started on 8 October 2026.
 
 Website: https://r4c0n7.github.io/SoloBitSafe/changelog.html
 
+## 2026-10-17 – V1.0.10b
+
+- Version V1.0.10b
+- The currency chosen in the app (Android, Windows, Linux) now also applies on the device display and in the web dashboard, like the language
+- Mining dashboard in the apps: hashrate with the last hour, shares, best diff, pool, network, chance per day and device temperature – over USB, Bluetooth or Wi-Fi
+- Web flasher: the device now restarts by itself after flashing; new "Erase" option (factory reset of wallet, Wi-Fi and settings, also with Secure Boot)
+- Web flasher: full install offers standard or hardened (Secure Boot + flash encryption, recommended); hardened opens after a test on a fresh board
+- Support section: donations decide which boards get supported next
+
 ## 2026-10-17
 
 - Web flasher: plug in the T-Display-S3 and install SoloBitSafe in Chrome or Edge – Update keeps wallet, settings and Wi-Fi, Full install sets up a new board
