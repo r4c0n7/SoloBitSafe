@@ -1,4 +1,4 @@
-VERSION = "V1.0.28b"
+VERSION = "V1.0.29b"
 SPENDE = "bc1q8draqujtwuy9gx799n0e5vylvx4aftrvd90trr"
 
 SPRACHEN = {"en": "English", "de": "Deutsch", "es": "Español", "fr": "Français"}
@@ -402,6 +402,24 @@ DATUM = {
 }
 
 LOG = [
+    ("2026-10-18", "V1.0.29b", {
+        "en": ["Version V1.0.29b (firmware) and app 1.0.15-b",
+               "Windows app: connecting over USB no longer restarts the device – firmware updates over USB now run through with the progress on the display",
+               "Electrum / Sparrow wait page with numbered steps: open the address or scan the QR code, enter the passphrase, Electrum continues by itself; after two minutes the display says what to do next",
+               "Groundwork for unlocking directly in Electrum with your passphrase (SoloBitSafe Electrum plugin, in testing)"],
+        "de": ["Version V1.0.29b (Firmware) und App 1.0.15-b",
+               "Windows-App: Verbinden über USB startet das Gerät nicht mehr neu – Firmware-Updates über USB laufen jetzt mit Fortschritt auf dem Display durch",
+               "Electrum-/Sparrow-Warteseite mit nummerierten Schritten: Adresse öffnen oder QR-Code scannen, Passphrase eingeben, Electrum macht von selbst weiter; nach zwei Minuten sagt das Display, was zu tun ist",
+               "Grundlage für das Entsperren direkt in Electrum mit deiner Passphrase (SoloBitSafe-Electrum-Plugin, im Test)"],
+        "es": ["Versión V1.0.29b (firmware) y app 1.0.15-b",
+               "App de Windows: conectar por USB ya no reinicia el dispositivo; las actualizaciones de firmware por USB terminan con el progreso en la pantalla",
+               "Página de espera de Electrum / Sparrow con pasos numerados: abre la dirección o escanea el QR, introduce la frase y Electrum sigue solo; a los dos minutos la pantalla indica qué hacer",
+               "Base para desbloquear directamente en Electrum con tu frase (plugin SoloBitSafe para Electrum, en pruebas)"],
+        "fr": ["Version V1.0.29b (firmware) et appli 1.0.15-b",
+               "Appli Windows : la connexion par USB ne redémarre plus l'appareil ; les mises à jour du firmware par USB vont jusqu'au bout avec la progression à l'écran",
+               "Page d'attente Electrum / Sparrow avec étapes numérotées : ouvrir l'adresse ou scanner le QR code, saisir la phrase secrète, Electrum continue tout seul ; après deux minutes, l'écran indique la suite",
+               "Base pour déverrouiller directement dans Electrum avec ta phrase secrète (plugin SoloBitSafe pour Electrum, en test)"],
+    }),
     ("2026-10-18", "V1.0.28b", {
         "en": ["Version V1.0.28b (firmware) and app 1.0.14-b",
                "Electrum over USB confirmed: Electrum 4.8 finds the device as a hardware wallet (Jade protocol), shows addresses on the display and signs with BTN1 – Sparrow and HWI use the same protocol, signing there is still being tested",

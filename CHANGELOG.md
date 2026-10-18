@@ -4,6 +4,13 @@ What changed, day by day, since the project started on 8 October 2026.
 
 Website: https://r4c0n7.github.io/SoloBitSafe/changelog.html
 
+## 2026-10-18 – V1.0.29b
+
+- Version V1.0.29b (firmware) and app 1.0.15-b
+- Windows app: connecting over USB no longer restarts the device – firmware updates over USB now run through with the progress on the display
+- Electrum / Sparrow wait page with numbered steps: open the address or scan the QR code, enter the passphrase, Electrum continues by itself; after two minutes the display says what to do next
+- Groundwork for unlocking directly in Electrum with your passphrase (SoloBitSafe Electrum plugin, in testing)
+
 ## 2026-10-18 – V1.0.28b
 
 - Version V1.0.28b (firmware) and app 1.0.14-b
