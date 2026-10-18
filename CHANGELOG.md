@@ -4,6 +4,15 @@ What changed, day by day, since the project started on 8 October 2026.
 
 Website: https://r4c0n7.github.io/SoloBitSafe/changelog.html
 
+## 2026-10-17 – V1.0.20b
+
+- Version V1.0.20b (firmware) and app 1.0.12-b
+- Bluetooth: a second and third pairing window in a row now works without a restart – the Bluetooth start reserves its memory in a fixed order
+- Changing the passphrase no longer restarts the device: the key derivation runs in its own task with enough stack and uses PSRAM
+- Bluetooth turns off at once after a cancelled or rejected pairing and whenever the wallet is locked; a new pairing needs BTN1 again
+- Windows app: pairing again after an earlier session waits until Windows has removed the old key, and a rejected pairing explains the next step
+- Firmware updates over the air verified on a board with Secure Boot and flash encryption
+
 ## 2026-10-17 – V1.0.13b
 
 - Version V1.0.13b

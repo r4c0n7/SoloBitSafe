@@ -1,4 +1,4 @@
-VERSION = "V1.0.13b"
+VERSION = "V1.0.20b"
 SPENDE = "bc1q8draqujtwuy9gx799n0e5vylvx4aftrvd90trr"
 
 SPRACHEN = {"en": "English", "de": "Deutsch", "es": "Español", "fr": "Français"}
@@ -390,6 +390,32 @@ DATUM = {
 }
 
 LOG = [
+    ("2026-10-17", "V1.0.20b", {
+        "en": ["Version V1.0.20b (firmware) and app 1.0.12-b",
+               "Bluetooth: a second and third pairing window in a row now works without a restart – the Bluetooth start reserves its memory in a fixed order",
+               "Changing the passphrase no longer restarts the device: the key derivation runs in its own task with enough stack and uses PSRAM",
+               "Bluetooth turns off at once after a cancelled or rejected pairing and whenever the wallet is locked; a new pairing needs BTN1 again",
+               "Windows app: pairing again after an earlier session waits until Windows has removed the old key, and a rejected pairing explains the next step",
+               "Firmware updates over the air verified on a board with Secure Boot and flash encryption"],
+        "de": ["Version V1.0.20b (Firmware) und App 1.0.12-b",
+               "Bluetooth: Ein zweites und drittes Kopplungsfenster hintereinander funktioniert jetzt ohne Neustart – der Bluetooth-Start belegt seinen Speicher in fester Reihenfolge",
+               "Passphrase ändern startet das Gerät nicht mehr neu: Die Schlüsselableitung läuft in einem eigenen Task mit genug Stack und nutzt PSRAM",
+               "Bluetooth geht nach einer abgebrochenen oder abgelehnten Kopplung und bei jedem Sperren der Wallet sofort aus; eine neue Kopplung braucht wieder BTN1",
+               "Windows-App: Erneutes Koppeln nach einer früheren Sitzung wartet, bis Windows den alten Schlüssel entfernt hat, und eine abgelehnte Kopplung erklärt den nächsten Schritt",
+               "Firmware-Updates über WLAN auf einem Board mit Secure Boot und Flash-Verschlüsselung geprüft"],
+        "es": ["Versión V1.0.20b (firmware) y app 1.0.12-b",
+               "Bluetooth: una segunda y tercera ventana de emparejamiento seguidas funcionan ahora sin reiniciar – el arranque de Bluetooth reserva su memoria en un orden fijo",
+               "Cambiar la frase de contraseña ya no reinicia el dispositivo: la derivación de la clave se ejecuta en su propia tarea con pila suficiente y usa PSRAM",
+               "Bluetooth se apaga en cuanto se cancela o rechaza un emparejamiento y cada vez que se bloquea la cartera; un nuevo emparejamiento necesita BTN1 otra vez",
+               "App de Windows: volver a emparejar tras una sesión anterior espera a que Windows borre la clave antigua, y un emparejamiento rechazado explica el siguiente paso",
+               "Actualizaciones de firmware por Wi-Fi comprobadas en una placa con Secure Boot y cifrado de la flash"],
+        "fr": ["Version V1.0.20b (firmware) et appli 1.0.12-b",
+               "Bluetooth : une deuxième et une troisième fenêtre d'appairage d'affilée fonctionnent désormais sans redémarrage – le démarrage Bluetooth réserve sa mémoire dans un ordre fixe",
+               "Changer la phrase secrète ne redémarre plus l'appareil : la dérivation de clé tourne dans sa propre tâche avec assez de pile et utilise la PSRAM",
+               "Le Bluetooth se coupe aussitôt après un appairage annulé ou refusé et à chaque verrouillage du portefeuille ; un nouvel appairage demande à nouveau BTN1",
+               "Appli Windows : un nouvel appairage après une session précédente attend que Windows ait supprimé l'ancienne clé, et un appairage refusé explique l'étape suivante",
+               "Mises à jour du firmware par Wi-Fi vérifiées sur une carte avec Secure Boot et chiffrement de la flash"],
+    }),
     ("2026-10-17", "V1.0.13b", {
         "en": ["Version V1.0.13b", "The device's miner dashboard no longer loads fonts from Google – opening it sends nothing to third parties",
                "Web flasher: hardened install (Secure Boot + flash encryption) is now available and preselected as the recommended choice, with its own confirmation; it only starts after the chip key is verified and checks the first hardened boot",
