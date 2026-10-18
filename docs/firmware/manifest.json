@@ -1,49 +1,49 @@
 {
- "version": "V1.0.13b",
+ "version": "V1.0.21b",
  "chip": "ESP32-S3",
  "flash": "16MB",
  "dateien": {
   "app": {
-   "pfad": "V1.0.13b/app.bin",
+   "pfad": "V1.0.21b/app.bin",
    "adresse": 65536,
    "groesse": 2232320,
-   "sha256": "a09c74e6358c0a25bf8509ab8fbb5250499346ca8767ba49b147ec293db4c28a"
+   "sha256": "be9ee84e9cb7e26061e5d0faf7f3f98f9bba5dc93e5cd94c882958aa918df4ec"
   },
   "otadata": {
-   "pfad": "V1.0.13b/otadata-leer.bin",
+   "pfad": "V1.0.21b/otadata-leer.bin",
    "adresse": 57344,
    "groesse": 8192,
    "sha256": "7d2c7ac4888bfd75cd5f56e8d61f69595121183afc81556c876732fd3782c62f"
   },
   "bootloader": {
-   "pfad": "V1.0.13b/bootloader.bin",
+   "pfad": "V1.0.21b/bootloader.bin",
    "adresse": 0,
    "groesse": 15104,
    "sha256": "1051ac3e564bb9368a635af94a219d01c6263dc7a89a5e132bd01fef925026a2"
   },
   "partitions": {
-   "pfad": "V1.0.13b/partitions.bin",
+   "pfad": "V1.0.21b/partitions.bin",
    "adresse": 32768,
    "groesse": 3072,
    "sha256": "540dc12e93ce2590d4ca2ffed56ec6fa1a775f41efafd3e31cdcd9e853e73fea"
   },
   "boot_app0": {
-   "pfad": "V1.0.13b/boot_app0.bin",
+   "pfad": "V1.0.21b/boot_app0.bin",
    "adresse": 57344,
    "groesse": 8192,
    "sha256": "f94c5d786a7a8fab06ac5d10e33bf37711a6697636dc037559ea19cc410a17f0"
   },
   "bootloader_sb": {
-   "pfad": "V1.0.13b/bootloader-sb.bin",
+   "pfad": "V1.0.21b/bootloader-sb.bin",
    "adresse": 0,
    "groesse": 28672,
-   "sha256": "85522eed977c51b6a3adb8825db421079963cd80a520b46d15ef8fbd3b60b906"
+   "sha256": "237b6f3afd672cf76554ac1616fee7091a2833f8751780bd1c7cd1438872fe8e"
   },
   "app1": {
-   "pfad": "V1.0.13b/app.bin",
+   "pfad": "V1.0.21b/app.bin",
    "adresse": 4259840,
    "groesse": 2232320,
-   "sha256": "a09c74e6358c0a25bf8509ab8fbb5250499346ca8767ba49b147ec293db4c28a"
+   "sha256": "be9ee84e9cb7e26061e5d0faf7f3f98f9bba5dc93e5cd94c882958aa918df4ec"
   }
  },
  "ablaeufe": {
