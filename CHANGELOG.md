@@ -4,6 +4,14 @@ What changed, day by day, since the project started on 8 October 2026.
 
 Website: https://r4c0n7.github.io/SoloBitSafe/changelog.html
 
+## 2026-10-18 – V1.0.28b
+
+- Version V1.0.28b (firmware) and app 1.0.14-b
+- Electrum over USB confirmed: Electrum 4.8 finds the device as a hardware wallet (Jade protocol), shows addresses on the display and signs with BTN1 – also works with Sparrow and HWI
+- When Electrum or Sparrow connect while the wallet is locked, the device now waits up to two minutes and shows the address to unlock in the browser as text and QR code; Electrum continues by itself once unlocked
+- The device no longer writes its log over USB unless a reader asks for it, so Electrum and Sparrow never receive stray log text
+- Firmware updates from the app: right after BTN1 the display shows the approval, then the progress in percent, the signature check and the restart; after the restart it confirms the old and new version. One click in the app is enough
+
 ## 2026-10-18 – V1.0.21b
 
 - Version V1.0.21b (firmware) and app 1.0.13-b
