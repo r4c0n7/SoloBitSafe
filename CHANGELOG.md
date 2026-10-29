@@ -4,6 +4,22 @@ What changed, day by day, since the project started on 8 October 2026.
 
 Website: https://r4c0n7.github.io/SoloBitSafe/changelog.html
 
+## 2026-10-29 – V1.0.31b
+
+- Version V1.0.31b (firmware) and app 1.0.16-b
+- QR codes contain only the address – no "bitcoin:" prefix any more; Taproot addresses now fit on the display QR too
+- Display brightness is set in percent, from 1 to 100 %
+- Bluetooth: the connection stays up after pairing in the app – the device no longer starts internet requests while Bluetooth is on, and the app reconnects once by itself if the link drops right after pairing
+- App: receive, send, review, confirm-on-device and sent pages in the new design
+
+## 2026-10-23 – V1.0.30b
+
+- Version V1.0.30b (firmware)
+- Completely redesigned display: new colours, fonts and icons on every page, in all four languages
+- New start page: Bitcoin price, 24 h change, market cap and a price chart (24 h, 7 days, 30 days or 1 year, selectable in the dashboard and the app)
+- Fiat value next to every balance on the display; the boot screen shows the real start-up steps
+- Wiping the wallet now needs BTN1 held for 10 seconds; a wrong last seed word shows a clear checksum page
+
 ## 2026-10-18 – V1.0.29b
 
 - Version V1.0.29b (firmware) and app 1.0.15-b

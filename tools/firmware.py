@@ -35,7 +35,7 @@ BEREICHE = [
 def main():
     quelle = sys.argv[1] if len(sys.argv) > 1 else "flasher-images"
     with tempfile.TemporaryDirectory() as t:
-        subprocess.run(["scp", "-q", "-o", "HostName=192.168.1.206", "-r", "pi:" + quelle, t], check=True)
+        subprocess.run(["scp", "-q", "-r", "pi:" + quelle, t], check=True)
         q = pathlib.Path(t, pathlib.Path(quelle).name)
         version = (q / "VERSION").read_text().strip()
         if ZIEL.exists():

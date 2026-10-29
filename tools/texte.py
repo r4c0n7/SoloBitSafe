@@ -1,4 +1,4 @@
-VERSION = "V1.0.29b"
+VERSION = "V1.0.31b"
 SPENDE = "bc1q8draqujtwuy9gx799n0e5vylvx4aftrvd90trr"
 
 SPRACHEN = {"en": "English", "de": "Deutsch", "es": "Español", "fr": "Français"}
@@ -402,6 +402,50 @@ DATUM = {
 }
 
 LOG = [
+    ("2026-10-29", "V1.0.31b", {
+        "en": ["Version V1.0.31b (firmware) and app 1.0.16-b",
+               "QR codes contain only the address – no \"bitcoin:\" prefix any more; Taproot addresses now fit on the display QR too",
+               "Display brightness is set in percent, from 1 to 100 %",
+               "Bluetooth: the connection stays up after pairing in the app – the device no longer starts internet requests while Bluetooth is on, and the app reconnects once by itself if the link drops right after pairing",
+               "App: receive, send, review, confirm-on-device and sent pages in the new design"],
+        "de": ["Version V1.0.31b (Firmware) und App 1.0.16-b",
+               "QR-Codes enthalten nur noch die Adresse – kein \"bitcoin:\" mehr davor; auch Taproot-Adressen passen jetzt in den Display-QR",
+               "Display-Helligkeit wird in Prozent eingestellt, von 1 bis 100 %",
+               "Bluetooth: Die Verbindung bleibt nach dem Koppeln in der App stehen – das Gerät startet keine Internet-Abfragen mehr, solange Bluetooth an ist, und die App verbindet sich einmal selbst neu, wenn die Verbindung direkt nach dem Koppeln abreißt",
+               "App: Empfangen, Senden, Prüfen, Am Gerät bestätigen und Gesendet im neuen Design"],
+        "es": ["Versión V1.0.31b (firmware) y app 1.0.16-b",
+               "Los códigos QR solo contienen la dirección, sin el prefijo \"bitcoin:\"; las direcciones Taproot ya caben también en el QR de la pantalla",
+               "El brillo de la pantalla se ajusta en porcentaje, de 1 a 100 %",
+               "Bluetooth: la conexión se mantiene tras emparejar en la app; el dispositivo ya no lanza consultas a internet mientras Bluetooth está activo y la app se reconecta sola una vez si el enlace cae justo después de emparejar",
+               "App: recibir, enviar, revisar, confirmar en el dispositivo y enviado con el nuevo diseño"],
+        "fr": ["Version V1.0.31b (firmware) et appli 1.0.16-b",
+               "Les QR codes ne contiennent plus que l'adresse, sans le préfixe \"bitcoin:\" ; les adresses Taproot tiennent désormais aussi dans le QR de l'écran",
+               "La luminosité de l'écran se règle en pourcentage, de 1 à 100 %",
+               "Bluetooth : la connexion tient après l'appairage dans l'appli ; l'appareil ne lance plus de requêtes Internet tant que le Bluetooth est actif, et l'appli se reconnecte seule une fois si la liaison tombe juste après l'appairage",
+               "Appli : recevoir, envoyer, vérifier, confirmer sur l'appareil et envoyé dans le nouveau design"],
+    }),
+    ("2026-10-23", "V1.0.30b", {
+        "en": ["Version V1.0.30b (firmware)",
+               "Completely redesigned display: new colours, fonts and icons on every page, in all four languages",
+               "New start page: Bitcoin price, 24 h change, market cap and a price chart (24 h, 7 days, 30 days or 1 year, selectable in the dashboard and the app)",
+               "Fiat value next to every balance on the display; the boot screen shows the real start-up steps",
+               "Wiping the wallet now needs BTN1 held for 10 seconds; a wrong last seed word shows a clear checksum page"],
+        "de": ["Version V1.0.30b (Firmware)",
+               "Komplett neu gestaltetes Display: neue Farben, Schriften und Icons auf jeder Seite, in allen vier Sprachen",
+               "Neue Startseite: Bitcoin-Kurs, 24-h-Änderung, Marktkapitalisierung und Kurschart (24 h, 7 Tage, 30 Tage oder 1 Jahr, wählbar im Dashboard und in der App)",
+               "Fiat-Wert neben jedem Guthaben auf dem Display; der Startbildschirm zeigt die echten Startschritte",
+               "Wallet löschen braucht jetzt BTN1 für 10 Sekunden; ein falsches letztes Seed-Wort zeigt eine klare Prüfsummen-Seite"],
+        "es": ["Versión V1.0.30b (firmware)",
+               "Pantalla totalmente rediseñada: nuevos colores, fuentes e iconos en cada página, en los cuatro idiomas",
+               "Nueva página de inicio: precio de Bitcoin, cambio en 24 h, capitalización y gráfico (24 h, 7 días, 30 días o 1 año, a elegir en el panel y en la app)",
+               "Valor fiat junto a cada saldo en la pantalla; el arranque muestra los pasos reales",
+               "Borrar el monedero requiere mantener BTN1 10 segundos; una última palabra errónea muestra una página clara de suma de control"],
+        "fr": ["Version V1.0.30b (firmware)",
+               "Écran entièrement repensé : nouvelles couleurs, polices et icônes sur chaque page, dans les quatre langues",
+               "Nouvelle page d'accueil : cours du Bitcoin, variation sur 24 h, capitalisation et graphique (24 h, 7 jours, 30 jours ou 1 an, au choix dans le tableau de bord et l'appli)",
+               "Valeur en devise à côté de chaque solde à l'écran ; le démarrage affiche les vraies étapes",
+               "Effacer le portefeuille demande de maintenir BTN1 10 secondes ; un dernier mot erroné affiche une page claire de somme de contrôle"],
+    }),
     ("2026-10-18", "V1.0.29b", {
         "en": ["Version V1.0.29b (firmware) and app 1.0.15-b",
                "Windows app: connecting over USB no longer restarts the device – firmware updates over USB now run through with the progress on the display",
