@@ -4,6 +4,14 @@ What changed, day by day, since the project started on 8 October 2026.
 
 Website: https://r4c0n7.github.io/SoloBitSafe/changelog.html
 
+## 2026-10-30 – V1.0.33b
+
+- Version V1.0.33b (firmware) and app 1.0.18-b
+- Wi-Fi: the phone and PC apps find the device again after the router renews its group key (hourly on many routers) – the device checks with a broadcast probe and reconnects only when the key went stale
+- Contacts: the address book is saved with a previous copy and is never overwritten by an empty one when a file cannot be read
+- App: coins page in the new design – select coins, label and freeze them, send only the selection
+- App: Wi-Fi search, pairing and errors are written to the system log for troubleshooting
+
 ## 2026-10-29 – V1.0.32b
 
 - Version V1.0.32b (firmware) and app 1.0.17-b

@@ -1,4 +1,4 @@
-VERSION = "V1.0.32b"
+VERSION = "V1.0.33b"
 SPENDE = "bc1q8draqujtwuy9gx799n0e5vylvx4aftrvd90trr"
 
 SPRACHEN = {"en": "English", "de": "Deutsch", "es": "Español", "fr": "Français"}
@@ -402,6 +402,28 @@ DATUM = {
 }
 
 LOG = [
+    ("2026-10-30", "V1.0.33b", {
+        "en": ["Version V1.0.33b (firmware) and app 1.0.18-b",
+               "Wi-Fi: the phone and PC apps find the device again after the router renews its group key (hourly on many routers) – the device checks with a broadcast probe and reconnects only when the key went stale",
+               "Contacts: the address book is saved with a previous copy and is never overwritten by an empty one when a file cannot be read",
+               "App: coins page in the new design – select coins, label and freeze them, send only the selection",
+               "App: Wi-Fi search, pairing and errors are written to the system log for troubleshooting"],
+        "de": ["Version V1.0.33b (Firmware) und App 1.0.18-b",
+               "WLAN: Handy- und PC-App finden das Gerät wieder, nachdem der Router seinen Gruppenschlüssel erneuert hat (bei vielen Routern stündlich) – das Gerät prüft das mit einer Broadcast-Probe und verbindet sich nur bei veraltetem Schlüssel neu",
+               "Kontakte: Das Adressbuch wird mit einer Vorgängerkopie gespeichert und nie durch ein leeres überschrieben, wenn eine Datei nicht lesbar ist",
+               "App: Münzen-Seite im neuen Design – Münzen auswählen, beschriften und sperren, nur die Auswahl senden",
+               "App: WLAN-Suche, Koppeln und Fehler landen zur Fehlersuche im Systemprotokoll"],
+        "es": ["Versión V1.0.33b (firmware) y app 1.0.18-b",
+               "Wi-Fi: las apps del móvil y del PC vuelven a encontrar el dispositivo después de que el router renueve su clave de grupo (cada hora en muchos routers): el dispositivo lo comprueba con una sonda de difusión y solo se reconecta si la clave está caducada",
+               "Contactos: la libreta se guarda con una copia anterior y nunca se sobrescribe con una vacía cuando un archivo no se puede leer",
+               "App: página de monedas con el nuevo diseño: seleccionar monedas, etiquetarlas y congelarlas, enviar solo la selección",
+               "App: la búsqueda Wi-Fi, el emparejamiento y los errores se escriben en el registro del sistema para diagnosticar problemas"],
+        "fr": ["Version V1.0.33b (firmware) et appli 1.0.18-b",
+               "Wi-Fi : les applis du téléphone et du PC retrouvent l'appareil après que le routeur a renouvelé sa clé de groupe (toutes les heures sur beaucoup de routeurs) – l'appareil le vérifie par une sonde de diffusion et ne se reconnecte que si la clé est périmée",
+               "Contacts : le carnet d'adresses est enregistré avec une copie précédente et n'est jamais écrasé par un carnet vide quand un fichier est illisible",
+               "Appli : page des pièces dans le nouveau design – sélectionner, étiqueter et geler des pièces, n'envoyer que la sélection",
+               "Appli : la recherche Wi-Fi, l'appairage et les erreurs sont écrits dans le journal système pour le dépannage"],
+    }),
     ("2026-10-29", "V1.0.32b", {
         "en": ["Version V1.0.32b (firmware) and app 1.0.17-b",
                "Bluetooth confirmed on the phone: pairing in the app, unlocking and all requests run over the encrypted link",
