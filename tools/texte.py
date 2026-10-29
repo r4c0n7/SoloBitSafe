@@ -1,4 +1,4 @@
-VERSION = "V1.0.31b"
+VERSION = "V1.0.32b"
 SPENDE = "bc1q8draqujtwuy9gx799n0e5vylvx4aftrvd90trr"
 
 SPRACHEN = {"en": "English", "de": "Deutsch", "es": "Español", "fr": "Français"}
@@ -402,6 +402,32 @@ DATUM = {
 }
 
 LOG = [
+    ("2026-10-29", "V1.0.32b", {
+        "en": ["Version V1.0.32b (firmware) and app 1.0.17-b",
+               "Bluetooth confirmed on the phone: pairing in the app, unlocking and all requests run over the encrypted link",
+               "If Bluetooth is off, the app asks the system to turn it on (Android dialog, Windows radio, Linux adapter) instead of showing an error",
+               "The app sends its requests to the device one after another, so none gets lost while the device is busy (for example while unlocking)",
+               "USB: the device again receives data that arrives right after start-up (serial log and tools)",
+               "App: history and transaction pages in the new design – transaction details with fee, size, address, path and a block explorer link"],
+        "de": ["Version V1.0.32b (Firmware) und App 1.0.17-b",
+               "Bluetooth am Handy bestätigt: Koppeln in der App, Entsperren und alle Abfragen laufen über die verschlüsselte Verbindung",
+               "Ist Bluetooth aus, bittet die App das System, es einzuschalten (Android-Dialog, Windows-Funk, Linux-Adapter), statt einen Fehler zu zeigen",
+               "Die App schickt ihre Anfragen nacheinander ans Gerät, damit keine verloren geht, während das Gerät beschäftigt ist (zum Beispiel beim Entsperren)",
+               "USB: Das Gerät empfängt wieder Daten, die direkt nach dem Start ankommen (serielles Log und Werkzeuge)",
+               "App: Verlauf und Transaktion im neuen Design – Details mit Gebühr, Größe, Adresse, Pfad und Link zum Block-Explorer"],
+        "es": ["Versión V1.0.32b (firmware) y app 1.0.17-b",
+               "Bluetooth confirmado en el móvil: emparejar en la app, desbloquear y todas las consultas van por el enlace cifrado",
+               "Si el Bluetooth está apagado, la app pide al sistema que lo active (diálogo de Android, radio de Windows, adaptador de Linux) en lugar de mostrar un error",
+               "La app envía sus peticiones al dispositivo una tras otra, así no se pierde ninguna mientras el dispositivo está ocupado (por ejemplo al desbloquear)",
+               "USB: el dispositivo vuelve a recibir los datos que llegan justo después del arranque (registro serie y herramientas)",
+               "App: historial y transacción con el nuevo diseño: detalles con comisión, tamaño, dirección, ruta y enlace al explorador de bloques"],
+        "fr": ["Version V1.0.32b (firmware) et appli 1.0.17-b",
+               "Bluetooth confirmé sur le téléphone : appairage dans l'appli, déverrouillage et toutes les requêtes passent par la liaison chiffrée",
+               "Si le Bluetooth est éteint, l'appli demande au système de l'activer (dialogue Android, radio Windows, adaptateur Linux) au lieu d'afficher une erreur",
+               "L'appli envoie ses requêtes à l'appareil l'une après l'autre, pour qu'aucune ne se perde pendant qu'il est occupé (par exemple au déverrouillage)",
+               "USB : l'appareil reçoit de nouveau les données arrivées juste après le démarrage (journal série et outils)",
+               "Appli : historique et transaction dans le nouveau design – détails avec frais, taille, adresse, chemin et lien vers l'explorateur de blocs"],
+    }),
     ("2026-10-29", "V1.0.31b", {
         "en": ["Version V1.0.31b (firmware) and app 1.0.16-b",
                "QR codes contain only the address – no \"bitcoin:\" prefix any more; Taproot addresses now fit on the display QR too",

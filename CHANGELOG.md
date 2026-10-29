@@ -4,6 +4,15 @@ What changed, day by day, since the project started on 8 October 2026.
 
 Website: https://r4c0n7.github.io/SoloBitSafe/changelog.html
 
+## 2026-10-29 – V1.0.32b
+
+- Version V1.0.32b (firmware) and app 1.0.17-b
+- Bluetooth confirmed on the phone: pairing in the app, unlocking and all requests run over the encrypted link
+- If Bluetooth is off, the app asks the system to turn it on (Android dialog, Windows radio, Linux adapter) instead of showing an error
+- The app sends its requests to the device one after another, so none gets lost while the device is busy (for example while unlocking)
+- USB: the device again receives data that arrives right after start-up (serial log and tools)
+- App: history and transaction pages in the new design – transaction details with fee, size, address, path and a block explorer link
+
 ## 2026-10-29 – V1.0.31b
 
 - Version V1.0.31b (firmware) and app 1.0.16-b
