@@ -4,6 +4,14 @@ What changed, day by day, since the project started on 8 October 2026.
 
 Website: https://r4c0n7.github.io/SoloBitSafe/changelog.html
 
+## 2026-10-30 – V1.0.34b
+
+- Version V1.0.34b (firmware) and app 1.0.19-b
+- Transactions in the dashboard open their details: fee, fee rate, size, inputs and outputs, own outputs, fee bump (RBF), full TxID to copy and a link to the block explorer
+- Block explorer links in the apps for transactions, addresses and coins – they follow the chosen server (your own Esplora server, mempool.space, or its onion address over Tor)
+- App: new pages for checking an address on the device, the firmware update with progress in percent and steps, Bluetooth pairing with the passkey, raising a fee (RBF) and the app PIN with a number pad
+- App: PSBT, device, settings, more, states and mining pages in the new design; every app and display page checked against the design
+
 ## 2026-10-30 – V1.0.33b
 
 - Version V1.0.33b (firmware) and app 1.0.18-b

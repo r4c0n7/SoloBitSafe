@@ -1,4 +1,4 @@
-VERSION = "V1.0.33b"
+VERSION = "V1.0.34b"
 SPENDE = "bc1q8draqujtwuy9gx799n0e5vylvx4aftrvd90trr"
 
 SPRACHEN = {"en": "English", "de": "Deutsch", "es": "Español", "fr": "Français"}
@@ -402,6 +402,28 @@ DATUM = {
 }
 
 LOG = [
+    ("2026-10-30", "V1.0.34b", {
+        "en": ["Version V1.0.34b (firmware) and app 1.0.19-b",
+               "Transactions in the dashboard open their details: fee, fee rate, size, inputs and outputs, own outputs, fee bump (RBF), full TxID to copy and a link to the block explorer",
+               "Block explorer links in the apps for transactions, addresses and coins – they follow the chosen server (your own Esplora server, mempool.space, or its onion address over Tor)",
+               "App: new pages for checking an address on the device, the firmware update with progress in percent and steps, Bluetooth pairing with the passkey, raising a fee (RBF) and the app PIN with a number pad",
+               "App: PSBT, device, settings, more, states and mining pages in the new design; every app and display page checked against the design"],
+        "de": ["Version V1.0.34b (Firmware) und App 1.0.19-b",
+               "Transaktionen im Dashboard öffnen ihre Details: Gebühr, Gebührenrate, Größe, Ein- und Ausgänge, eigene Ausgänge, Gebühr erhöhbar (RBF), vollständige TxID zum Kopieren und ein Link zum Block-Explorer",
+               "Block-Explorer-Links in den Apps für Transaktionen, Adressen und Münzen – sie folgen dem gewählten Server (eigener Esplora-Server, mempool.space oder dessen Onion-Adresse über Tor)",
+               "App: neue Seiten für die Adressprüfung am Gerät, das Firmware-Update mit Fortschritt in Prozent und Schritten, das Bluetooth-Koppeln mit Passkey, das Erhöhen der Gebühr (RBF) und die App-PIN mit Ziffernblock",
+               "App: PSBT, Gerät, Einstellungen, Mehr, Zustände und Mining im neuen Design; jede App- und Display-Seite gegen das Design geprüft"],
+        "es": ["Versión V1.0.34b (firmware) y app 1.0.19-b",
+               "Las transacciones del panel abren sus detalles: comisión, tasa, tamaño, entradas y salidas, salidas propias, comisión ampliable (RBF), TxID completo para copiar y un enlace al explorador de bloques",
+               "Enlaces al explorador de bloques en las apps para transacciones, direcciones y monedas: siguen el servidor elegido (tu propio servidor Esplora, mempool.space o su dirección onion por Tor)",
+               "App: páginas nuevas para comprobar una dirección en el dispositivo, la actualización de firmware con progreso en porcentaje y pasos, la vinculación Bluetooth con clave, subir la comisión (RBF) y el PIN de la app con teclado numérico",
+               "App: PSBT, dispositivo, ajustes, más, estados y minería con el nuevo diseño; cada página de la app y de la pantalla comprobada frente al diseño"],
+        "fr": ["Version V1.0.34b (firmware) et appli 1.0.19-b",
+               "Les transactions du tableau de bord ouvrent leurs détails : frais, taux, taille, entrées et sorties, sorties propres, frais augmentables (RBF), TxID complet à copier et un lien vers l'explorateur de blocs",
+               "Liens vers l'explorateur de blocs dans les applis pour les transactions, adresses et pièces – ils suivent le serveur choisi (votre propre serveur Esplora, mempool.space ou son adresse onion via Tor)",
+               "Appli : nouvelles pages pour vérifier une adresse sur l'appareil, la mise à jour du firmware avec progression en pourcentage et étapes, l'appairage Bluetooth avec code, l'augmentation des frais (RBF) et le PIN de l'appli avec pavé numérique",
+               "Appli : PSBT, appareil, réglages, plus, états et minage dans le nouveau design ; chaque page de l'appli et de l'écran vérifiée par rapport au design"],
+    }),
     ("2026-10-30", "V1.0.33b", {
         "en": ["Version V1.0.33b (firmware) and app 1.0.18-b",
                "Wi-Fi: the phone and PC apps find the device again after the router renews its group key (hourly on many routers) – the device checks with a broadcast probe and reconnects only when the key went stale",
