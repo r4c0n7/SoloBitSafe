@@ -202,7 +202,7 @@ def startseite(s):
 <h1>{akzent(t["h1"])}</h1>
 <p class="lead">{e(t["lead"])}</p>
 <p class="aktionen"><a class="knopf primaer" href="guide.html">{e(ANLEITUNG[s]["titel"])}</a><a class="knopf" href="flash.html">{e(FLASHER[s]["titel"])}</a><a class="knopf" href="#ansichten">{e(t["knopf_screens"])}</a><a class="knopf" href="changelog.html">{e(t["knopf_log"])}</a></p>
-<p class="stand">{e(t["stand"].format(v=VERSION))}</p>
+<p class="stand">{e(t["stand"].format(v=VERSION, d=DATUM[s](int(LOG[0][0][8:10]), int(LOG[0][0][5:7]))))}</p>
 </div>
 {geraet(s, t)}
 </section>

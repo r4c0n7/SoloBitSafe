@@ -4,6 +4,10 @@ What changed, day by day, since the project started on 8 October 2026.
 
 Website: https://r4c0n7.github.io/SoloBitSafe/changelog.html
 
+## 2026-10-30
+
+- Website in the new design: same colours, type and controls as the device and the apps; all screenshots retaken from the current app, dashboard and display
+
 ## 2026-10-30 – V1.0.34b
 
 - Version V1.0.34b (firmware) and app 1.0.19-b

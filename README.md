@@ -8,13 +8,14 @@ with its Android, Windows and Linux app. [Changelog](CHANGELOG.md).
 ## Build
 
 ```bash
-py tools/bilder.py <firmware-repo> <preview-folder>   # screenshots -> docs/img (WebP), donation QR
-py tools/build.py                                     # texts (tools/texte.py) -> docs/*.html, CHANGELOG.md
+node tools/bilder_aufnehmen.js                              # pictures -> roh/vorschau, roh/display (PNG)
+py tools/bilder.py <firmware-repo> roh/vorschau roh/display  # -> docs/img (WebP), donation QR
+py tools/build.py                                           # texts (tools/texte.py) -> docs/*.html, CHANGELOG.md
 ```
 
-GitHub Pages serves `docs/` from `main`. Screenshots come from the app (`app/test/vorschau_test.dart`
-with `VORSCHAU=<folder>`) and the web dashboard (`tools/ui-pruefung/vorschau.js` against the mock device),
-both rendered with the public BIP39 test wallet.
+GitHub Pages serves `docs/` from `main`. The pictures are taken from the design export of the
+implementation (`Desktop\SoloBitSafe-Design-Export`: app pages and device display) and the dashboard
+export (`Desktop\SoloBitSafe-Dashboard-Export`), both rendered with the public BIP39 test wallet.
 
 ## Support
 

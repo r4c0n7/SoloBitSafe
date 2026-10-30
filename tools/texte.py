@@ -12,7 +12,7 @@ T = {
         "lead": "SoloBitSafe turns a LilyGo T-Display-S3 into a Bitcoin keystore. Your phone or computer prepares the payment, the device shows exactly what you sign – and nothing leaves it until you press BTN1. While it waits, it mines solo.",
         "knopf_screens": "See the screens",
         "knopf_log": "Read the changelog",
-        "stand": "Current version {v}, released 18 October 2026.",
+        "stand": "Current version {v}, released {d}.",
         "warnung": "Beta. Real mainnet payments sent and confirmed, every signature cross-checked by Electrum and embit, updates signed and protected against downgrades. Secure Boot v2 and flash encryption are enabled on the reference device. Not yet independently audited, so keep larger amounts on an established hardware wallet for now.",
         "geraet_alt": "The SoloBitSafe display cycling through start, mining, wallet and payment receipt screens",
         "btn1": "BTN1",
@@ -109,7 +109,7 @@ T = {
         "lead": "SoloBitSafe macht aus einem LilyGo T-Display-S3 einen Bitcoin-Schlüsselspeicher. Handy oder Rechner bereiten die Zahlung vor, das Gerät zeigt genau, was du signierst – und nichts verlässt es, bevor du BTN1 drückst. Während es wartet, schürft es solo.",
         "knopf_screens": "Ansichten ansehen",
         "knopf_log": "Änderungen lesen",
-        "stand": "Aktuelle Version {v}, erschienen am 18. Oktober 2026.",
+        "stand": "Aktuelle Version {v}, erschienen am {d}.",
         "warnung": "Beta. Echte Mainnet-Zahlungen gesendet und bestätigt, jede Signatur von Electrum und embit gegengeprüft, Updates signiert und gegen Downgrades geschützt. Secure Boot v2 und Flash-Verschlüsselung sind auf dem Referenzgerät aktiv. Noch kein unabhängiges Audit – größere Beträge vorerst auf einer etablierten Hardware-Wallet halten.",
         "geraet_alt": "Das SoloBitSafe-Display wechselt zwischen Start, Mining, Wallet und Zahlungsbeleg",
         "btn1": "BTN1",
@@ -206,7 +206,7 @@ T = {
         "lead": "SoloBitSafe convierte una LilyGo T-Display-S3 en un almacén de claves de Bitcoin. El móvil o el ordenador preparan el pago, el dispositivo muestra exactamente lo que firmas – y nada sale hasta que pulsas BTN1. Mientras espera, mina en solitario.",
         "knopf_screens": "Ver las pantallas",
         "knopf_log": "Leer los cambios",
-        "stand": "Versión actual {v}, publicada el 18 de octubre de 2026.",
+        "stand": "Versión actual {v}, publicada el {d}.",
         "warnung": "Beta. Pagos reales en mainnet enviados y confirmados, cada firma verificada con Electrum y embit, actualizaciones firmadas y protegidas contra versiones anteriores. Secure Boot v2 y el cifrado de la flash están activos en el dispositivo de referencia. Aún sin auditoría independiente: por ahora guarda importes mayores en un monedero de hardware consolidado.",
         "geraet_alt": "La pantalla de SoloBitSafe alterna entre inicio, minería, monedero y recibo de pago",
         "btn1": "BTN1",
@@ -303,7 +303,7 @@ T = {
         "lead": "SoloBitSafe transforme une LilyGo T-Display-S3 en coffre de clés Bitcoin. Ton téléphone ou ton ordinateur prépare le paiement, l'appareil affiche exactement ce que tu signes – et rien ne sort avant que tu appuies sur BTN1. En attendant, il mine en solo.",
         "knopf_screens": "Voir les écrans",
         "knopf_log": "Lire les changements",
-        "stand": "Version actuelle {v}, publiée le 18 octobre 2026.",
+        "stand": "Version actuelle {v}, publiée le {d}.",
         "warnung": "Bêta. Paiements mainnet réels envoyés et confirmés, chaque signature vérifiée par Electrum et embit, mises à jour signées et protégées contre les retours de version. Secure Boot v2 et le chiffrement de la flash sont actifs sur l'appareil de référence. Pas encore d'audit indépendant : pour l'instant, garde les montants plus importants sur un portefeuille matériel éprouvé.",
         "geraet_alt": "L'écran de SoloBitSafe passe de l'accueil au minage, au portefeuille puis au reçu de paiement",
         "btn1": "BTN1",
@@ -402,6 +402,12 @@ DATUM = {
 }
 
 LOG = [
+    ("2026-10-30", None, {
+        "en": ["Website in the new design: same colours, type and controls as the device and the apps; all screenshots retaken from the current app, dashboard and display"],
+        "de": ["Website im neuen Design: dieselben Farben, Schriften und Bedienelemente wie Gerät und Apps; alle Bilder neu aus der aktuellen App, dem Dashboard und dem Display"],
+        "es": ["Web con el nuevo diseño: los mismos colores, tipografías y controles que el dispositivo y las apps; todas las capturas rehechas desde la app, el panel y la pantalla actuales"],
+        "fr": ["Site dans le nouveau design : mêmes couleurs, polices et commandes que l'appareil et les applis ; toutes les captures refaites depuis l'appli, le tableau de bord et l'écran actuels"],
+    }),
     ("2026-10-30", "V1.0.34b", {
         "en": ["Version V1.0.34b (firmware) and app 1.0.19-b",
                "Transactions in the dashboard open their details: fee, fee rate, size, inputs and outputs, own outputs, fee bump (RBF), full TxID to copy and a link to the block explorer",
