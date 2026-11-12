@@ -345,3 +345,4 @@ body { overflow-x: clip; }
 .spalte:nth-child(2) h3 { color: var(--green); }
 .spalte:nth-child(3) h3 { color: var(--blue); }
 .technik dt, .technik dd { border-top-color: var(--line); }
+.spalte li strong { display: block; color: var(--text); font-weight: 600; margin-bottom: .15rem; }

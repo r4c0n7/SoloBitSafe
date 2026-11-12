@@ -13,9 +13,17 @@ py tools/bilder.py <firmware-repo> roh/vorschau roh/display  # -> docs/img (WebP
 py tools/build.py                                           # texts (tools/texte.py) -> docs/*.html, CHANGELOG.md
 ```
 
-GitHub Pages serves `docs/` from `main`. The pictures are taken from the design export of the
-implementation (`Desktop\SoloBitSafe-Design-Export`: app pages and device display) and the dashboard
-export (`Desktop\SoloBitSafe-Dashboard-Export`), both rendered with the public BIP39 test wallet.
+GitHub Pages serves `docs/` from `main`. The pictures are taken from two exports of the firmware
+repo, both rendered with the public BIP39 test wallet; generate them before `bilder_aufnehmen.js`:
+
+```bash
+cd app && DESIGN_EXPORT=~/Desktop/SoloBitSafe-Design-Export flutter test test/design_export_test.dart
+node tools/design/dashboard_export.js ~/Desktop/SoloBitSafe-Dashboard-Export
+```
+
+The web flasher images come from `tools/pi/flasher-images.sh` on the Pi; `py tools/firmware.py <dir>` (default `flasher-images`)
+copies them to `docs/firmware/<version>/` and writes `manifest.json`, `node tools/flash_pruefen.js`
+checks the flasher page.
 
 ## Support
 

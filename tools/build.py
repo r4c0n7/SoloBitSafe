@@ -189,7 +189,7 @@ def startseite(s):
         f"<li><h3>{e(a)}</h3><p>{e(b)}</p></li>" for a, b in t["ablauf"]
     )
     spalten = "".join(
-        f'<section class="spalte"><h3>{e(t[k + "_h"])}</h3><ul>{"".join(f"<li>{e(x)}</li>" for x in t[k])}</ul></section>'
+        f'<section class="spalte"><h3>{e(t[k + "_h"])}</h3><ul>{"".join(f"<li><strong>{e(a)}</strong>{e(b)}</li>" for a, b in t[k])}</ul></section>'
         for k in ["wallet", "miner", "app"]
     )
     technik = "".join(f"<dt>{e(a)}</dt><dd>{e(b)}</dd>" for a, b in t["technik"])
